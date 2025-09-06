@@ -1,0 +1,19 @@
+# Generated documentation
+site/
+
+# MkDocs cache
+.cache/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*~

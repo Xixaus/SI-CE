@@ -1,0 +1,12 @@
+pyserial>=3.5
+tqdm>=4.60.0
+pandas>=1.2.0
+
+[:platform_system == "Windows"]
+pywin32>=300
+
+[dev]
+pytest>=6.0
+pytest-cov>=2.10
+black>=21.0
+flake8>=3.9
