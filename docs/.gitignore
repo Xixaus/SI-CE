@@ -1,28 +1,53 @@
-# Generated documentation
-site/
+# ========================================
+# Ignorovat vše kromě Markdown dokumentace
+# ========================================
 
-# MkDocs cache
+# Nejdřív ignorovat úplně všechno
+*
+
+# Povolit procházení do všech složek (nutné pro git)
+!*/
+
+# Povolit pouze Markdown soubory
+!*.md
+!*.MD
+
+# Povolit důležité konfigurační soubory pro dokumentaci
+!mkdocs.yml
+!.gitignore
+!LICENSE
+!README.md
+
+# Explicitně povolit složku docs a její obsah
+!docs/
+!docs/**/*.md
+
+# Ignorovat generované soubory i když jsou .md
+site/
 .cache/
 
-# Python cache
+# Ignorovat Python cache vždy
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+.Python
+*.so
 
-# IDE
+# IDE složky vždy ignorovat
 .vscode/
 .idea/
-
-# Temporary files
-*.tmp
-*.bak
+*.swp
+*.swo
 *~
 
-# Ignore everything by default
-*
+# Ignorovat dočasné soubory
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
 
-# Allow directories (so git can traverse into them)
-!*/
-
-# Allow only Markdown files
-!*.md
+# Ignorovat build a dist složky
+build/
+dist/
+*.egg-info/
