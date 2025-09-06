@@ -2,80 +2,140 @@
 
 Common questions and solutions for SI-CE integration workflows.
 
-## Overview
+## 🚀 Getting Started
 
 ### What is SI-CE?
 
-SI-CE is a comprehensive Python package that seamlessly integrates Sequential Injection (SI) with Capillary Electrophoresis (CE) through Agilent ChemStation. This powerful combination enables complete laboratory automation including:
+**Quick Answer:** SI-CE is a Python package that integrates Sequential Injection (SI) with Capillary Electrophoresis (CE) through Agilent ChemStation for complete laboratory automation.
+
+**Detailed Explanation:** 
+This comprehensive system enables:
 
 - **Automated sample preparation** - Streamlined sample handling and preparation workflows
 - **CE instrument control** - Direct communication with ChemStation for method execution
 - **Batch analysis workflows** - Process multiple samples with minimal manual intervention  
 - **Complete analytical automation** - End-to-end automation from sample prep to data analysis
 
-### Hardware Compatibility
+**Related Topics:** [Getting Started](../getting-started.md), [System Architecture](../index.md)
+
+---
+
+### What hardware is compatible?
+
+**Quick Answer:** The system supports Agilent CE systems with OpenLab ChemStation C.01.07 SR2 and VICI/Valco valve selectors.
+
+**Detailed Explanation:**
 
 **Supported ChemStation Systems:**
 
-- Tato verze byla vyvíjena a testována na Openlab ChemStation ver. C.01.07 SR2 [255] s CE 7100
-- Funkčnost rozhraní byla testována i na jiných verzích Chemstationů a připojených přístrojů ovšem není zaručená funkčnost vytvořených funkcí
-- Rozhraní nevunguje kvůli absenci command procesoru a nepodpoře maker na OpenLab CDS 2.x
+- Developed and tested on OpenLab ChemStation ver. C.01.07 SR2 [255] with CE 7100
+- Interface functionality tested on other ChemStation versions, but full compatibility is not guaranteed
+- Not compatible with OpenLab CDS 2.x due to absence of command processor and lack of macro support
 
 **SIA Components:**
 
 - VICI/Valco valve selectors and switching systems
-- Compatible third-party devices with similar commands
-- Additional components can be integrated and will be supported in future releases
+- Compatible third-party devices with similar command protocols
+- Additional components can be integrated in future releases
 
-### Programming Requirements
 
-While basic Python knowledge is helpful, extensive programming experience is not required. The package is designed for accessibility:
+---
+
+### Do I need programming experience?
+
+**Quick Answer:** Basic Python knowledge is helpful but not required - the package includes high-level methods and copy-paste examples.
+
+**Detailed Explanation:**
+
+The package is designed for accessibility with:
 
 - **High-level workflow methods** - Simple functions for complex operations
 - **Pre-built analytical procedures** - Ready-to-use templates for common analyses
 - **Copy-paste examples** - Working code snippets you can adapt immediately
 - **Comprehensive documentation** - Detailed guides and tutorials
 
-**AI-Assisted Development:** You can leverage generative AI tools (ChatGPT, Claude, etc.) by providing them with the repository link. These tools can help you program custom methods tailored to your specific needs. However, always thoroughly test any AI-generated code before implementation in production workflows.
+**AI-Assisted Development:** You can leverage generative AI tools (ChatGPT, Claude, etc.) by providing them with the repository link. These tools can help you create custom methods tailored to your specific needs. However, always thoroughly test any AI-generated code before implementation in production workflows.
 
-## Communication and Control
-
-### Monitoring ChemStation Communication
-
-**Q: How can I monitor what commands are being sent to ChemStation?**
-
-**A: Enable verbose logging for detailed monitoring:**
-
+**Code Example:**
 ```python
-# Enable detailed logging to see all commands and responses
+# Simple one-line operations
+workflow.continuous_fill(vial=15, volume=1500, solvent_port=5)
+workflow.homogenize_sample(vial=15, speed=1000, time=30)
+```
+
+**Related Topics:** [First Analysis Tutorial](../tutorials/first-analysis.md), [Basic Operations](../sia-api/basic-operations.md)
+
+---
+
+## 🔌 Communication and Control
+
+### How can I monitor ChemStation communication?
+
+**Quick Answer:** Enable verbose logging or monitor communication files directly to see all commands and responses.
+
+**Detailed Explanation:**
+The system uses file-based communication that can be monitored in real-time for debugging and optimization.
+
+**Code Example:**
+```python
+# Enable detailed logging
 config = CommunicationConfig(verbose=True)
 api = ChemstationAPI(config)
 
-# Alternative: Monitor communication files directly (PowerShell)
-Get-Content "communication_files\command" -Wait
+# Monitor communication files directly (PowerShell)
+# Get-Content "communication_files\command" -Wait
 ```
 
-**Q: Občas vypadává komunikace mezi pythonem a Chemstationem. Čím je to způsobeno?**
+**Related Topics:** [File Protocol](../chemstation-api/file-protocol.md), [Troubleshooting](../chemstation-api/troubleshooting.md)
 
-**A: Výpadky komunikace byli pozorovány v určitých případech:**
+---
 
-1. **Po spuštění příkazu se v chmestationu objeví errorová tabulka**
-    - Může se jednat o spuštění metody v době kdy kdy ji ještě běží metoda
-    - Nesplnění timeoutu u příkazu send -> vyzkoušení vytvořeného příkazu a případné zvýšení timeoutu (viz příkaz validation.get_vialtable()), kde je u příkazu send nastaven vyšší timeout, jelikož provádění makra trvá delší dobu
-    - po vypnutí errorové tabulky se může pokračovat dále
-    - před spuštěním příkazů je potřeba předřadit validace aby se daný příkaz spustil ve vhodnou dobu
+### Why does communication occasionally drop?
 
-2. **Zadrhnutí komunikace**
-    - U některých příkazů, které se volají velmi rychle po sobě ve smyčce se může stát je občas se nedostane odpověď
-    - Tato situace nastávala u příkazu system.status(), kdy se při zjištování statusu občas nedostala odpověď a nastala chyba -> v příkazu je zavedený zaveden cyklus s try, kdy pokud se 3 nepodaří získat odpoveď, tak se až poté zobrazí chyba
-    - V tomto případě se může pokračovat, stačí skript obnovit
+**Quick Answer:** Communication drops typically occur when error dialogs appear in ChemStation or when timeout conditions aren't met.
 
-### Custom ChemStation Commands
+**Detailed Explanation:**
+Communication drops have been observed in specific cases:
 
-**Q: Can I send custom commands directly to ChemStation?**
+1. **Error dialog appears in ChemStation:**
 
-**A: Yes, use the send() method for any valid ChemStation command:**
+    May occur when starting a method while another is still running
+    Timeout not met for command execution (see `validation.get_vialtable()` which uses higher timeout for longer macro execution)
+    After closing the error dialog, operation can continue
+    Always use validation before commands to ensure proper timing
 
+2. **Communication deadlock:**
+
+    Some commands called rapidly in succession may occasionally not receive responses
+    Common with `system.status()` when checking status repeatedly
+    Implementation includes retry logic (3 attempts before error)
+    If this occurs, simply restart the script
+
+**Code Example:**
+```python
+# Robust status checking with retry logic
+def get_status_with_retry(api, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            return api.system.status()
+        except TimeoutError:
+            if attempt == max_retries - 1:
+                raise
+            time.sleep(1)
+```
+
+**Related Topics:** [Error Handling](../api-reference/error-handling.md), [Communication Protocol](../chemstation-api/file-protocol.md)
+
+---
+
+### Can I send custom commands to ChemStation?
+
+**Quick Answer:** Yes, use the `send()` method to execute any valid ChemStation command directly.
+
+**Detailed Explanation:**
+The API provides direct access to ChemStation's command processor for advanced operations not covered by high-level methods.
+
+**Code Example:**
 ```python
 # Read current oven temperature
 response = api.send('response$ = VAL$(ObjHdrVal(RCCE1Status[1], "Temperature_actual"))')
@@ -84,39 +144,40 @@ print(f"Current oven temperature: {response}°C")
 # Get method path
 method_path = api.send("response$ = _METHPATH$")
 print(f"Active method: {method_path}")
+
+# Execute custom macro
+api.send('macro "C:\\custom_macro.mac"; custom_procedure 15, "parameter"')
 ```
 
-## Capillary Electrophoresis Operations
+**Related Topics:** [ChemStation Macros](../tutorials/chemstation-macros.md), [API Reference](../api-reference/chemstation-api.md)
 
-### Vial Loading Issues
+---
 
-**Q: Unable to load vials into the carousel**
+## ⚗️ Capillary Electrophoresis Operations
 
-**A: Vial loading failures typically occur for two main reasons:**
+### Unable to load vials into the carousel
+
+**Quick Answer:** Vial loading fails when the CE system is in an incompatible state or when pressure is applied during run.
+
+**Detailed Explanation:**
 
 **System State Issues:**
-The CE system may not be in a state that allows carousel operation. Vial loading is blocked when the system is in certain states to prevent operational conflicts:
 
+The carousel may be locked in certain states:
 - **IDLE state**: Normal operation - carousel accessible    
 - **RUN state**: Analysis in progress - carousel may be locked
+- **Apply pressure in run**: If pressure is applied at any time (including additional pressure during analysis), the carousel is locked
 - **Other states**: Carousel typically locked for safety
-- **Apply pressure in run**: Pokud je kdykoliv aplikován tlak, i během runu v metodě (přídavný tlak v analýze), tak je carousel zablokovaný a nelze použít
 
-**Solution:** Implement state checking in your workflows:
+**Missing Vial Validation:**
+The system cannot locate the specified vial in the carousel.
+
+**Code Example:**
 ```python
 # Wait for appropriate system state before vial operations
 while not api.is_carousel_available():
     time.sleep(5)  # Wait for system to reach appropriate state
 
-# Then proceed with vial loading
-carousel.load_vial(position=1)
-```
-
-**Missing Vial Validation:**
-The system cannot locate the specified vial in the carousel.
-
-**Solution:** Implement vial validation at workflow start:
-```python
 # Validate all required vials are present before starting
 required_positions = [1, 2, 3, 5, 8]
 missing_vials = carousel.validate_vials(required_positions)
@@ -124,111 +185,166 @@ if missing_vials:
     raise ValueError(f"Missing vials at positions: {missing_vials}")
 ```
 
-## Method Configuration
+**Related Topics:** [Basic Operations](../chemstation-api/basic-operations.md), [Validation Module](../api-reference/chemstation-validation.md)
 
-### Modifying Method Parameters
+---
 
-**Q: Can I modify method parameters like temperature, voltage, etc. programmatically?**
+### Can I modify method parameters programmatically?
 
-**A: Yes, method parameters can be modified using ChemStation registry commands:**
+**Quick Answer:** Yes, method parameters can be modified using ChemStation registry commands, though this feature is experimental.
 
-Method parameters are stored in RC{module}Method[1] registers and can be modified directly:
+**Detailed Explanation:**
+Method parameters are stored in RC{module}Method[1] registers and can be modified directly. During RC.Net log analysis (see ChemStation Macros tutorial), commands for parameter modification were discovered. When these commands are executed, parameters are successfully updated. However, this approach has not been thoroughly tested.
 
+**Code Example:**
 ```python
-# Example: Modify separation voltage
-api.send('SetObjHdrVal RCCE1Method[1], "Voltage", 10') tohle se musí opravit
+# Example: Modify separation voltage (experimental - test thoroughly)
+api.send('SetObjHdrVal RCCE1Method[1], "Voltage", 10')
 
+# Upload method, modify, download
+api.send('UploadRCMethod CE1')
+api.send('SetObjHdrVal RCCE1Method[1], "Temperature", 25')
+api.send('DownloadRCMethod CE1')
 ```
-
-Při zkoumání RC.Net logu (viz kapitola chemstation Macros 7. ""tady by bylo dobré udělat křířový odkaz"") bylo objeveno, že při změně parametrů metody se objevý příkazy pro jejich úpravu a při zadání příkazů se parametry upravili. Ovšem tento postup nebyl nijak testován.
 
 **Additional Resources:**
-- See tutorial/chemstation_scripting section on Registry RCNET for comprehensive parameter lists
-- Reference implementation: [HPLC Method Optimization GUI](https://github.com/Bourne-Group/HPLCMethodOptimisationGUI/blob/main/MACROS(1)/editMeth.MAC)
 
-## Sequential injection components
+- See tutorial/chemstation_scripting section on Registry RCNET
+- Reference implementation: [HPLC Method Optimization GUI](https://github.com/Bourne-Group/HPLCMethodOptimisationGUI)
 
-### Add conponents
+**Related Topics:** [ChemStation Macros](../tutorials/chemstation-macros.md), [Methods Module](../api-reference/chemstation-methods.md)
 
-**Q: Lze integravat další komponenty, tkeré nejsou součástí (míchadélka, pumpy, ...)?**
+---
 
-**A: Ano, do k´du lze přidal další komponenty:**
+## 💉 Sequential Injection Components
 
-- V části SIA_API/Core je polečný komunikační rozhraní pro odesílání a příjmíní příkazů z COM portu, a které většinou komunikují SI komponenty jako mohou být pumpy, ventily nebo mikrocontrolery (Arduino, ESP32)
-- Pro přidání dalších částí je nutné zjistit příkazy pomocí kterých se ovládají funkce daných komponent. Také je nutné jejich otestování před nasazením a správným nastavením komuikačního rozhraní.
-- Současné ovládání a vytvořené moduly vznikly ze zdorjového k´du progranu [CocoSoft](https://link.springer.com/article/10.1007/s00216-015-8834-8) 7.2, pomocí kterého šlo ovládat i další komponenty. Bohužel v dnešní době již néní přístupný
+### Can I integrate additional components?
 
+**Quick Answer:** Yes, additional components (stirrers, pumps, etc.) can be integrated using the common communication interface in SIA_API/Core.
 
-## Syringe Operation
+**Detailed Explanation:**
 
-### syringe Volume Management
+- The SIA_API/Core provides a common communication interface for sending and receiving commands via COM port
+- Most SI components like pumps, valves, or microcontrollers (Arduino, ESP32) communicate through this interface
+- To add new components, you need to identify their control commands and test them thoroughly before deployment
 
-**Q: Getting syringe volume tracking errors**
+**Background:**
+Current control modules were developed from the source code of [CocoSoft](https://link.springer.com/article/10.1007/s00216-015-8834-8) 7.2, which could control additional components. Unfortunately, this software is no longer accessible.
 
-**A: The API automatically tracks syringe volume, but errors can occur:**
-
+**Code Example:**
 ```python
-# Check current syringe volume in počítadlo
-syringe.print_volume_in_syringe()
-
-# Reset volume tracking if needed
-syringe.dispense()  # Empty syringe completely and reset internal counter
-
-# Or
-syringe.get_actual_volume() # Vrácení naátého objemu ve stříkačce a přepsání počítadla
-
-# Or perform complete reinitialization
-syringe.initialize()
+# Example: Adding a custom stirrer component
+class StirrerController:
+    def __init__(self, port, baudrate=9600):
+        self.device = SerialDevice(port, baudrate)
+    
+    def set_speed(self, rpm):
+        self.device.send_command(f"SPEED {rpm}")
+    
+    def start(self):
+        self.device.send_command("START")
 ```
 
+**Related Topics:** [Port Configuration](../sia-api/port-configuration.md), [Device Integration](../api-reference/sia-api.md)
 
-## Troubleshooting Guide
+---
+
+### Getting syringe volume tracking errors
+
+**Quick Answer:** Check current syringe volume, reset tracking if needed, or perform complete reinitialization.
+
+**Detailed Explanation:**
+
+The API automatically tracks syringe volume but errors can occur due to:
+- Mismatch between actual and tracked volume
+- Incomplete operations
+- Communication interruptions
+
+**Code Example:**
+```python
+# Check current syringe volume counter
+syringe.print_volume_in_syringe()
+
+# Reset volume tracking - empty syringe completely
+syringe.dispense()  # Empty and reset internal counter
+
+# Get actual volume and update counter
+syringe.get_actual_volume()  # Return drawn volume and overwrite counter
+
+# Complete reinitialization
+syringe.initialize()  # Full reset to home position
+```
+
+**Related Topics:** [Basic SIA Operations](../sia-api/basic-operations.md), [Troubleshooting](../troubleshooting.md)
+
+---
+
+## 🛠️ Troubleshooting Guide
 
 ### Systematic Diagnosis Approach
 
-When encountering issues, follow this diagnostic sequence:
+**Quick Answer:** Follow the diagnostic sequence: verify connections → validate software → analyze errors → test components.
+
+**Detailed Explanation:**
 
 **1. Verify Physical Connections**
+
 - Confirm power status on all devices
 - Check cable connections and COM port assignments
 - Test basic communication with each component
 
 **2. Validate Software Prerequisites**
+
 - ChemStation running and responsive
 - Required macros loaded and active
 - All specified vials present in carousel
 - Target methods exist and are accessible
 
 **3. Analyze Error Messages**
+
 - Note specific exception types and error codes
 - Look for recurring error patterns
 - Enable verbose mode for detailed diagnostics
 
-**4. Component-Level Testing**
+**Code Example:**
 ```python
-# Test individual components in isolation
-try:
-    syringe.initialize()
-    print("✓ syringe communication OK")
-except Exception as e:
-    print(f"✗ syringe error: {e}")
-
-try:
-    valve.position(1)
-    print("✓ Valve communication OK")
-except Exception as e:
-    print(f"✗ Valve error: {e}")
-
-try:
-    response = api.send("response$ = _METHPATH$")
-    print(f"✓ ChemStation communication OK: {response}")
-except Exception as e:
-    print(f"✗ ChemStation error: {e}")
+# Component-level testing
+def test_all_components():
+    results = {}
+    
+    # Test syringe
+    try:
+        syringe.initialize()
+        results['syringe'] = "✓ OK"
+    except Exception as e:
+        results['syringe'] = f"✗ Error: {e}"
+    
+    # Test valve
+    try:
+        valve.position(1)
+        results['valve'] = "✓ OK"
+    except Exception as e:
+        results['valve'] = f"✗ Error: {e}"
+    
+    # Test ChemStation
+    try:
+        response = api.send("response$ = _METHPATH$")
+        results['chemstation'] = f"✓ OK: {response}"
+    except Exception as e:
+        results['chemstation'] = f"✗ Error: {e}"
+    
+    return results
 ```
+
+**Related Topics:** [Troubleshooting Guide](../chemstation-api/troubleshooting.md), [Error Handling](../api-reference/error-handling.md)
+
+---
 
 ### Common Issues Quick Reference
 
-**Most frequent problems and solutions:**
+**Quick Answer:** 90% of issues stem from: macro not loaded, incorrect COM ports, missing vials/methods, or insufficient timeouts.
+
+**Most Frequent Problems:**
 
 1. **ChemStation macro not running** → Reload macro in ChemStation command line
 2. **Incorrect COM port configuration** → Use device manager to verify port assignments  
@@ -236,7 +352,38 @@ except Exception as e:
 4. **Timeout settings too short** → Increase timeout values for complex operations
 5. **Volume tracking errors** → Reset syringe and reinitialize volume counter
 
-## Getting Support
+**Code Example:**
+```python
+# Complete system reset procedure
+def full_system_reset():
+    print("Performing full system reset...")
+    
+    # 1. Abort any running operations
+    try:
+        api.system.abort_run()
+    except:
+        pass
+    
+    # 2. Unload all vials
+    for position in ["inlet", "outlet", "replenishment"]:
+        try:
+            api.ce.unload_vial_from_position(position)
+        except:
+            pass
+    
+    # 3. Reinitialize
+    time.sleep(5)
+    api = ChemstationAPI()
+    syringe.initialize()
+    
+    return api
+```
+
+**Related Topics:** [Getting Started](../getting-started.md), [System Recovery](../troubleshooting.md)
+
+---
+
+## 📚 Getting Support
 
 ### Available Resources
 
@@ -257,12 +404,8 @@ When requesting support, please include:
 ---
 
 !!! tip "Quick Resolution Tips"
-    
-    **90% of issues stem from these common causes:**
-    
-    1. **ChemStation macro not properly loaded or running**
-    2. **COM port conflicts or incorrect assignments** 
-    3. **Missing physical components (vials, methods)**
-    4. **Insufficient timeout values for complex operations**
-    
-    **Always check these fundamentals first before diving into complex troubleshooting!**
+    **Always check these fundamentals first:**
+    1. ChemStation macro properly loaded and running
+    2. COM port conflicts or incorrect assignments
+    3. Missing physical components (vials, methods)
+    4. Insufficient timeout values for complex operations
