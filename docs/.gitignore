@@ -17,3 +17,12 @@ __pycache__/
 *.tmp
 *.bak
 *~
+
+# Ignore everything by default
+*
+
+# Allow directories (so git can traverse into them)
+!*/
+
+# Allow only Markdown files
+!*.md
