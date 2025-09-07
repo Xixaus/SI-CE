@@ -167,8 +167,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/Xixaus/SIA-CE-code/issues)
-- **Documentation**: [Project Documentation](docs/)
-- **Contact**: Richard Maršala - risaniusl@gmail.com
+- **Documentation**: [Project Documentation](https://xixaus.github.io/SI-CE/)
+- **Contact**: Richard Maršala - risanius@gmail.com
 
 ## ⚠️ Important Notes
 
