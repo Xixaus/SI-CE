@@ -2,12 +2,12 @@
 
 ## Overview
 
-The `SyringeController` class provides complete automation of syringe pumps for precise fluid handling in SIA systems. It supports Hamilton MVP series and compatible pumps with automatic volume tracking and safety features.
+The `SyringeController` class provides complete automation of syringe pumps for precise fluid handling in SI systems. It supports Hamilton MVP series and compatible pumps with automatic volume tracking and safety features.
 
 ## Quick Start
 
 ```python
-from SIA_API.devices import SyringeController
+from SI_API.devices import SyringeController
 
 # Initialize syringe pump
 syringe = SyringeController(
@@ -22,6 +22,15 @@ syringe.set_speed_uL_min(1500)         # Set flow rate
 syringe.aspirate(500)                   # Draw 500 µL
 syringe.dispense(250)                   # Dispense 250 µL
 ```
+
+## Speed Limits and Calculations
+
+The syringe controller automatically calculates flow rate limits based on syringe size:
+
+- **Minimum speed**: `0.05 × syringe_size` µL/min
+- **Maximum speed**: `60 × syringe_size` µL/min
+
+These limits are set in the syringe firmware, but very high speeds can damage the syringe or the system.
 
 ## Supported Syringe Sizes
 
@@ -76,6 +85,38 @@ syringe.set_speed_uL_min(500)   # Gentle mixing
 # Maximum: 60 × syringe_size µL/min
 ```
 
+## Emergency Operations
+
+### Emergency Stop
+
+```python
+# Immediately halt all syringe operations
+syringe.emergency_stop()
+```
+
+The `emergency_stop()` method:
+
+- **Immediately terminates** any running operation
+- **Updates volume counter** to reflect current position
+- **Safe to use** during any operation for safety shutdowns
+- **Automatic status update** ensures accurate volume tracking
+
+Use this method when:
+
+- System errors are detected
+- Manual intervention is needed
+- Safety concerns arise
+- Process needs immediate termination
+
+```python
+# Example emergency handling
+try:
+    syringe.aspirate(1000)
+except KeyboardInterrupt:
+    syringe.emergency_stop()  # Safe shutdown
+    print(f"Emergency stop - current volume: {syringe.volume_counter} µL")
+```
+
 ## Volume Tracking
 
 The controller automatically tracks syringe contents:
@@ -111,6 +152,7 @@ syringe.valve_up()    # Bypass/waste position
 ```
 
 ### Supported Valve Types
+
 - 'No' - No valve attached
 - '3-Port' - Standard 3-way valve
 - '4-Port' - 4-way selection valve
@@ -142,9 +184,6 @@ while not syringe._is_pump_ready():
     time.sleep(0.1)
 print("Aspiration completed")
 ```
-
-**Přidat emergency_stop**
-
 
 ### High-Resolution Mode
 
@@ -236,7 +275,7 @@ def robust_operation():
 
 For detailed hardware information, command specifications, and troubleshooting:
 
-- **Cavro XP**: [https://github.com/Xixaus/SI-CE/tree/main/SIA_API/devices/manuals]
+- **[Cavro XCalibur Operating Manual](https://github.com/Xixaus/SI-CE/blob/main/SIA_API/devices/manuals/Cavro%20XCalibur.pdf)** - Comprehensive pump specifications and setup
 
 ## Next Steps
 

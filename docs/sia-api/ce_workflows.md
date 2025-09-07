@@ -1,15 +1,15 @@
-# CE Workflows - SIA Integration
+# CE Workflows - SI Integration
 
 ## Overview
 
-The `PreparedSIMethods` class provides high-level automation workflows that combine SIA sample preparation with Capillary Electrophoresis analysis. These workflows handle complex sequences of operations for complete analytical automation.
+The `PreparedSIMethods` class provides high-level automation workflows that combine SI sample preparation with Capillary Electrophoresis analysis. These workflows handle complex sequences of operations for complete analytical automation.
 
 ## System Integration
 
 ```python
 from ChemstationAPI import ChemstationAPI
-from SIA_API.devices import SyringeController, ValveSelector  
-from SIA_API.methods import PreparedSIMethods
+from SI_API.devices import SyringeController, ValveSelector  
+from SI_API.methods import PreparedSIMethods
 
 # Initialize all components
 ce_api = ChemstationAPI()
@@ -39,6 +39,7 @@ workflow.system_initialization_and_cleaning(
 ```
 
 **What happens during initialization:**
+
 1. Syringe homing and speed setting
 2. Holding coil flushing with methanol
 3. DI water rinse cycles
@@ -47,13 +48,13 @@ workflow.system_initialization_and_cleaning(
 
 ### Sample Handling Integration
 
-The workflows automatically coordinate between SIA preparation and CE autosampler:
+The workflows automatically coordinate between SI preparation and CE autosampler:
 
 ```python
 # Load vial to CE replenishment position
 workflow.load_to_replenishment(vial_number=15)
 
-# Perform SIA operations on loaded vial
+# Perform SI operations on loaded vial
 workflow.continuous_fill(vial=15, volume=500, solvent_port=3)
 
 # Unload vial back to carousel  
@@ -86,6 +87,7 @@ for vial in sample_vials:
 ```
 
 **Continuous flow characteristics:**
+
 - Transfer line pre-filled with solvent
 - Faster operation (no air gaps)
 - Consistent flow properties
@@ -114,6 +116,7 @@ workflow.batch_fill(
 ```
 
 **Batch flow characteristics:**
+
 - Air-driven dispensing
 - Complete separation between solutions
 - Suitable for solvent changes
@@ -216,31 +219,46 @@ workflow.homogenize_by_air_mixing(
 
 ## Complete Analytical Workflows
 
-### Automated Protein Analysis
+### Automated Analysis
 
 ```python
-def protein_analysis_workflow():
-    """Complete protein sample preparation and analysis"""
-    
+def analysis_workflow():
+    """Complete sample preparation and analysis"""
+
+    # Sample preparation
+    samples = [10, 11, 12, 13]
+    method_name = "CE_Protein_Analysis"
+
+    ce_api.validation.list_vial_validation(samples)
+    ce_api.validation.validate_method(method_name)
+
     # System initialization
     workflow.system_initialization_and_cleaning()
     
-    # Sample preparation
-    protein_samples = [10, 11, 12, 13]
-    
     # Prepare buffer dilutions  
-    workflow.prepare_continuous_flow(solvent_port=6)  # Protein buffer
+    workflow.prepare_continuous_flow(solvent_port=6)  # Buffer
     
-    for vial in protein_samples:
-        # Add buffer (1:2 dilution)
+    for vial in samples:
+        # Add buffer
         workflow.continuous_fill(
             vial=vial,
             volume=500,      # 500 µL buffer
             solvent_port=6,
             flush_needle=25
         )
-        
-        # Gentle mixing to preserve protein structure
+    
+    print("Samples ready for CE analysis")
+
+    workflow.prepare_for_liquid_homogenization()
+
+    # Proceed with CE analysis using ChemStation integration
+    for vial in samples:
+    
+        #čekání až bude možné použít carousel
+        while ce_api.system.RC_status() not in ["Idle", "Run"]:
+            time.sleep(5)
+
+        #homogenizace vzorku před analýzou
         workflow.homogenize_by_liquid_mixing(
             vial=vial,
             volume_aspirate=200,
@@ -248,63 +266,18 @@ def protein_analysis_workflow():
             aspirate_speed=1000,  # Gentle
             dispense_speed=1200
         )
-    
-    print("Protein samples ready for CE analysis")
-    print("Add 500 µL protein sample to each vial")
-    
-    # Proceed with CE analysis using ChemStation integration
-    for vial in protein_samples:
+
+        #čekání až bude systém připraven na spuštění analýzy
+        ce_api.system.ready_to_start_analysis()
+
+        #spuštění analýzy s parametry
         ce_api.method.execution_method_with_parameters(
             vial=vial,
             method_name="CE_Protein_Analysis",
             sample_name=f"Protein_Sample_{vial}"
         )
 
-protein_analysis_workflow()
-```
-
-### High-Throughput Screening
-
-```python
-def high_throughput_screening():
-    """Process multiple samples quickly"""
-    
-    # Use high-speed configuration
-    workflow.update_config(
-        speed_fast=4000,
-        speed_normal=3000,
-        wait_after_dispense=0.2  # Minimal wait times
-    )
-    
-    # Initialize system
-    workflow.system_initialization_and_cleaning()
-    
-    # Batch preparation
-    sample_range = list(range(10, 25))  # 15 samples
-    
-    # Prepare all samples with water
-    workflow.prepare_continuous_flow(solvent_port=3, speed=3000)
-    
-    for vial in sample_range:
-        workflow.continuous_fill(
-            vial=vial,
-            volume=800,
-            solvent_port=3,
-            flush_needle=None  # Skip cleaning for speed
-        )
-    
-    # Quick homogenization
-    for vial in sample_range:
-        workflow.homogenize_by_air_mixing(
-            vial=vial,
-            volume_aspirate=200,
-            num_cycles=2,
-            wait_between_cycles=3.0  # Shorter mixing time
-        )
-    
-    print(f"Prepared {len(sample_range)} samples for high-throughput analysis")
-
-high_throughput_screening()
+analysis_workflow()
 ```
 
 ## Configuration and Optimization
@@ -312,7 +285,7 @@ high_throughput_screening()
 ### Custom Port Configuration
 
 ```python
-from SIA_API.methods import create_custom_config
+from SI_API.methods import create_custom_config
 
 # Create custom port mapping
 custom_ports = create_custom_config(
@@ -362,100 +335,6 @@ precision_config = {
 workflow.update_config(**precision_config)
 ```
 
-## Integration Benefits
-
-### Parallel Processing
-
-While CE analysis runs, SIA can prepare next samples:
-
-```python
-def parallel_prep_and_analysis():
-    """Parallel sample preparation during CE analysis"""
-    
-    samples = [15, 16, 17, 18]
-    
-    for i, current_vial in enumerate(samples):
-        # Start CE analysis of current sample
-        ce_api.method.execution_method_with_parameters(
-            vial=current_vial,
-            method_name="CE_Fast_Screen",
-            sample_name=f"Sample_{current_vial}"
-        )
-        
-        # While CE runs, prepare next sample (if available)
-        if i < len(samples) - 1:
-            next_vial = samples[i + 1]
-            
-            # Prepare next sample during current analysis
-            workflow.continuous_fill(
-                vial=next_vial, 
-                volume=1000,
-                solvent_port=3
-            )
-            
-            workflow.homogenize_by_liquid_mixing(
-                vial=next_vial,
-                volume_aspirate=300,
-                num_cycles=2
-            )
-        
-        # Wait for current analysis to complete
-        while ce_api.system.method_on():
-            time.sleep(30)
-
-parallel_prep_and_analysis()
-```
-
-### Adaptive Workflows
-
-Modify preparation based on sample properties:
-
-```python
-def adaptive_sample_prep(sample_list):
-    """Adapt preparation based on sample type"""
-    
-    for sample in sample_list:
-        vial = sample['vial']
-        sample_type = sample['type']
-        
-        if sample_type == 'protein':
-            # Gentle handling for proteins
-            workflow.homogenize_by_liquid_mixing(
-                vial=vial,
-                volume_aspirate=250,
-                aspirate_speed=1000,  # Gentle
-                num_cycles=2
-            )
-            
-        elif sample_type == 'small_molecule':
-            # Vigorous mixing for small molecules
-            workflow.homogenize_by_air_mixing(
-                vial=vial,
-                volume_aspirate=400,
-                air_bubble_volume=100,
-                num_cycles=3
-            )
-            
-        elif sample_type == 'viscous':
-            # Special handling for viscous samples
-            workflow.homogenize_by_air_mixing(
-                vial=vial,
-                volume_aspirate=200,  # Smaller volume
-                aspirate_speed=500,   # Very slow
-                num_cycles=6,         # More cycles
-                wait_between_cycles=10.0
-            )
-
-# Example usage
-samples = [
-    {'vial': 15, 'type': 'protein'},
-    {'vial': 16, 'type': 'small_molecule'},  
-    {'vial': 17, 'type': 'viscous'}
-]
-
-adaptive_sample_prep(samples)
-```
-
 ## Best Practices
 
 ### 1. Always Initialize First
@@ -487,25 +366,12 @@ print(f"Syringe size: {status['syringe_size']} µL")
 print(f"Port assignments: {status['port_assignments']}")
 ```
 
-### 5. Error Recovery Planning
-```python
-def robust_workflow():
-    """Workflow with error recovery"""
-    try:
-        workflow.system_initialization_and_cleaning()
-        # ... main workflow operations
-    except Exception as e:
-        print(f"Workflow error: {e}")
-        # Attempt recovery
-        workflow.flush_transfer_line_to_waste()
-        raise  # Re-raise for handling at higher level
-```
 
 ## Custom Configuration
 
 ### Port Configuration
 ```python
-from SIA_API.methods import create_custom_config
+from SI_API.methods import create_custom_config
 
 # Create custom port mapping
 custom_ports = create_custom_config(
@@ -547,7 +413,7 @@ workflow.update_config(
 
 ## Advanced Integration
 
-The SIA-CE integration enables sophisticated analytical workflows:
+The SI-CE integration enables sophisticated analytical workflows:
 
 - **Unattended operation**: Complete sample prep and analysis
 - **Method development**: Automated optimization studies  

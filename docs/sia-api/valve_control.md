@@ -2,12 +2,12 @@
 
 ## Overview
 
-The `ValveSelector` class controls multi-position valve selectors for automated fluid routing in SIA systems. It supports VICI/Valco and compatible valves with 2-12 positions.
+The `ValveSelector` class controls multi-position valve selectors for automated fluid routing in SI systems. It supports VICI/Valco and compatible valves with 2-12 positions.
 
 ## Quick Start
 
 ```python
-from SIA_API.devices import ValveSelector
+from SI_API.devices import ValveSelector
 
 # Initialize valve selector
 valve = ValveSelector(
@@ -154,21 +154,11 @@ valve.position(4)
 syringe.aspirate(100)
 ```
 
-### 3. Dead Volume Consideration
-```python
-def flush_line_between_solvents():
-    """Flush line when switching between incompatible solvents"""
-    valve.position(1)  # Waste
-    syringe.aspirate(50)  # Remove previous solvent
-    syringe.dispense()
-```
-
 ## Documentation References
 
-For valve-specific information:
+For comprehensive valve specifications and setup procedures:
 
-- **VICI Valve Manual**: Complete hardware specifications, setup procedures, and communication protocol https://github.com/Xixaus/SI-CE/blob/main/SIA_API/devices/manuals/universal-actuator.pdf
-
+- **[VICI Universal Actuator Manual](https://github.com/Xixaus/SI-CE/blob/main/SIA_API/devices/manuals/universal-actuator.pdf)** - Complete hardware specifications and setup procedures
 
 ## Next Steps
 

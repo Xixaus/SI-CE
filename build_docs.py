@@ -38,7 +38,6 @@ def build_docs(clean=False):
 
 def serve_docs(port=8000):
     """Serve documentation locally."""
-    print(f"\n🌐 Serving documentation on http://127.0.0.1:{port}")
     print("  Press Ctrl+C to stop")
     
     try:

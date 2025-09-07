@@ -1,8 +1,8 @@
-# SIA API - Sequential Injection Module
+# SI API - Sequential Injection Module
 
 ## What is Sequential Injection?
 
-Sequential Injection (SI) is an automated liquid handling technique that enables precise control of fluid movement for analytical chemistry applications. Unlike manual pipetting, SIA provides reproducible, computer-controlled operations with microliter precision.
+Sequential Injection (SI) is an automated liquid handling technique that enables precise control of fluid movement for analytical chemistry applications. Unlike manual pipetting, SI provides reproducible, computer-controlled operations with microliter precision.
 
 ## System Components
 
@@ -26,13 +26,12 @@ Routes fluids between different sources and destinations:
 
 ### 3. Holding Coil
 
-Temporary storage for fluids during complex operations: přesně popsat funkci holding coil
+Temporary storage for fluids during complex operations:
 
 - **Capacity**: 1-5 mL typical volume
-- **Mixing**: Enables complex fluid manipulations
-- **Segmentation**: Air bubbles separate different solutions
-- **Flow path**: Connects valve to sample needle
-
+- **Mixing**: Enables complex fluid manipulations via liquid mixing or air bubble segmentation
+- **Segmentation**: Air bubbles separate different solutions, preventing cross-contamination
+- **Flow path**: Connects valve to sample needle, acting as a fluid reservoir
 
 **Basic Operation Sequence:**
 
@@ -42,9 +41,9 @@ Temporary storage for fluids during complex operations: přesně popsat funkci h
 4. Syringe pushes fluid from holding coil to destination
 5. Repeat for complex procedures
 
-## SIA_API Module Overview
+## SI_API Module Overview
 
-The SIA_API provides Python control for Sequential Injection systems with three main components:
+The SI_API provides Python control for Sequential Injection systems with three main components:
 
 ### Core Communication (`core/`)
 - **Universal serial interface** for analytical instruments
@@ -55,7 +54,7 @@ The SIA_API provides Python control for Sequential Injection systems with three 
 ### Device Controllers (`devices/`)
 - **SyringeController**: Complete syringe pump automation
 - **ValveSelector**: Multi-position valve control
-- **Cavro XP compatibility**: Tested with industry-standard pumps
+- **Hamilton MVP compatibility**: Tested with industry-standard pumps
 - **VICI valve support**: Compatible with common valve selectors
 
 ### Workflow Methods (`methods/`)
@@ -86,11 +85,19 @@ The SIA_API provides Python control for Sequential Injection systems with three 
 - Minimal reagent consumption
 - High sample throughput
 
+## Documentation Resources
+
+For detailed hardware specifications and setup procedures:
+
+- **[Device Manuals](https://github.com/Xixaus/SI-CE/tree/main/SIA_API/devices/manuals)** - Complete hardware documentation and setup guides
+- **[Syringe Pump Manual](https://github.com/Xixaus/SI-CE/blob/main/SIA_API/devices/manuals/Cavro%20XCalibur.pdf)** - Cavro XCalibur manual
+- **[Valve Manual](https://github.com/Xixaus/SI-CE/blob/main/SIA_API/devices/manuals/universal-actuator.pdf)** - VICI Universal Actuator documentation
+
 ## Quick Start Example
 
 ```python
-from SIA_API import SyringeController, ValveSelector
-from SIA_API.methods import PreparedSIMethods
+from SI_API import SyringeController, ValveSelector
+from SI_API.methods import PreparedSIMethods
 
 # Initialize hardware
 syringe = SyringeController(port="COM3", syringe_size=1000)
