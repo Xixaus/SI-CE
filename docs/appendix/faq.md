@@ -124,7 +124,7 @@ def get_status_with_retry(api, max_retries=3):
             time.sleep(1)
 ```
 
-**Related Topics:** [Error Handling](../api-reference/error-handling.md), [Communication Protocol](../chemstation-api/file-protocol.md)
+**Related Topic:** [Communication Protocol](../chemstation-api/file-protocol.md)
 
 ---
 

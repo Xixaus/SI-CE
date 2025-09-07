@@ -1,7 +1,7 @@
-site_name: SIA-CE Integration
+site_name: SI-CE Integration
 site_description: Python package for automated capillary electrophoresis with Agilent ChemStation
 site_author: Richard Maršala
-site_url: https://github.com/yourusername/SIA-CE
+site_url: https://github.com/Xixaus/SI-CE
 
 theme:
   name: material
@@ -30,8 +30,8 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-repo_url: https://github.com/yourusername/SIA-CE
-repo_name: SIA-CE
+repo_url: https://github.com/Xixaus/SI-CE
+repo_name: SI-CE
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -87,10 +87,11 @@ nav:
       - Methods & Sequences: chemstation-api/methods-sequences.md
       - Troubleshooting: chemstation-api/troubleshooting.md
   - SIA API:
-      - Introduction: sia-api/introduction.md
-      - Basic Operations: sia-api/basic-operations.md
-      - Workflows: sia-api/workflows.md
-      - Port Configuration: sia-api/port-configuration.md
+      - Introduction: sia-api/sia_introduction.md
+      - Core comunication: sia-api/core_communication.md
+      - Syringe Controller: sia-api/syringe_control.md
+      - Valve Selector: sia-api/valve_control.md
+      - Workflows: sia-api/ce_workflows.md
   - Tutorials:
       - First Analysis: tutorials/first-analysis.md
       - Batch Processing: tutorials/batch-processing.md
@@ -118,8 +119,6 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourusername
-    - icon: fontawesome/brands/python
-      link: https://pypi.org/project/sia-ce/
-
-copyright: Copyright &copy; 2025 Richard Maršala
+      link: https://github.com/Xixaus
+    # - icon: fontawesome/brands/python
+    #   link: https://pypi.org/project/sia-ce/
