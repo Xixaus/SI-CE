@@ -9,11 +9,10 @@ Before installing SIA-CE, ensure your system meets these requirements:
 ### Software Requirements
 - **Python 3.7 or higher** with pip package manager
 - **Agilent ChemStation** software properly configured and licensed
-- **Git** (optional, for cloning the repository)
 - **VSCode** (recommended) - Provides enhanced code editing capabilities and debugging tools
 
 ### Hardware Requirements
-- **Capillary Electrophoresis system** compatible with ChemStation
+- **Agilent CE7100** or another machine ovládaná chemstationem
 - **SI components** (syringe pump, valve selector)
 - **Serial communication ports** for device connectivity
 
@@ -23,15 +22,6 @@ Before installing SIA-CE, ensure your system meets these requirements:
 
 ### Step 1: Download the SIA-CE Package
 
-Choose one of the following methods:
-
-#### Option A: Clone with Git (Recommended)
-```bash
-git clone https://github.com/Xixaus/SIA-CE-code.git
-cd SIA-CE-code
-```
-
-#### Option B: Download ZIP
 1. Navigate to: https://github.com/Xixaus/SIA-CE-code
 2. Click "Code" → "Download ZIP"
 3. Extract to your desired location (e.g., `C:\SIA-CE\`)
@@ -54,21 +44,20 @@ python -m pip install -e .
 
 The installation will automatically install all required dependencies:
 
-- `pyserial` (≥3.5) - Serial communication with SIA hardware
+- `pyserial` (≥3.5) - Serial communication with SI hardware
 - `tqdm` (≥4.60.0) - Progress bars for long-running operations  
 - `pandas` (≥1.2.0) - Data manipulation and analysis
 - `pywin32` (≥300) - Windows-specific functionality (Windows only)
 
-### Step 3: Install Optional Development Tools
+### Step 3: Install Jupyter notebook
 
 For enhanced script development and testing:
+
+Trochu více popsat, dát sem nějakou tabulku s tím co to je a v čem je to dobré, nějak to dát jako volitelný krok
 
 ```bash
 # Jupyter for interactive development
 python -m pip install jupyter notebook
-
-# Development tools (optional)
-python -m pip install pytest pytest-cov black flake8
 ```
 
 ### Step 4: Verify Installation
@@ -81,7 +70,6 @@ import ChemstationAPI
 import SIA_API
 
 print("SIA-CE package successfully installed!")
-print(f"ChemstationAPI version: {ChemstationAPI.__version__ if hasattr(ChemstationAPI, '__version__') else 'Not specified'}")
 ```
 
 ---
@@ -119,12 +107,6 @@ macro "C:\path\to\SIA-CE\ChemstationAPI\core\ChemPyConnect.mac"; Python_Run
     ```
     This confirms the communication bridge is active and ready.
 
-!!! warning "Critical Path Configuration"
-    **Use the exact path from Step 1!** The path will vary based on your installation location.
-    
-    Example paths:
-    - Pip install: `C:\Users\[username]\AppData\Local\Programs\Python\Python39\Lib\site-packages\ChemstationAPI\core\ChemPyConnect.mac`
-    - Development install: `C:\SIA-CE\ChemstationAPI\core\ChemPyConnect.mac`
 
 ### Step 3: Verify ChemStation Integration
 
@@ -154,7 +136,7 @@ print("ChemStation connection established successfully!")
 
 ---
 
-## Hardware Configuration
+## SI system Configuration
 
 ### Step 1: Identify COM Ports
 
@@ -280,89 +262,10 @@ def system_test():
         print(f"✗ Valve error: {e}")
         return False
     
-    print("\n🎉 All systems operational! Ready for automated analysis.")
+    print("\n🎉 All systems operational!")
     return True
 
 # Run the test
 if __name__ == "__main__":
     system_test()
 ```
-
----
-
-## Common Installation Issues
-
-### Python Package Not Found
-`ModuleNotFoundError: No module named 'ChemstationAPI'`
-
-**Fix:** Reinstall the package:
-```bash
-cd C:\path\to\SIA-CE
-python -m pip install -e . --force-reinstall
-```
-
-### ChemStation Connection Problems
-`ConnectionError: Failed to establish communication with ChemStation`
-
-**Fix:** The error message shows the exact macro command needed. Copy and run it in ChemStation:
-```
-macro "C:\your\path\ChemPyConnect.mac"; Python_Run
-```
-
-### COM Port Access Issues
-`SerialException: could not open port COM3`
-
-**Fix:** 
-- Run Python as Administrator
-- Close other serial monitors (Arduino IDE, etc.)
-- Check correct port in Device Manager
-
-### Hardware Communication Timeouts
-`TimeoutError: Device did not respond`
-
-**Fix:** Test different baudrates:
-```python
-for baud in [9600, 19200, 38400, 115200]:
-    try:
-        syringe = SyringeController(port="COM3", baudrate=baud)
-        print(f"✓ Working baudrate: {baud}")
-        break
-    except:
-        continue
-```
-
----
-
-## Quick Configuration Template
-
-Create a `config.py` file for your project settings:
-
-```python
-# config.py - System configuration
-SYRINGE_PORT = "COM3"
-VALVE_PORT = "COM4"
-SYRINGE_SIZE = 1000  # microliters
-VALVE_POSITIONS = 8
-BAUDRATE = 9600
-```
-
-Use it in your scripts:
-```python
-from config import *
-from SIA_API.devices import SyringeController, ValveSelector
-
-syringe = SyringeController(port=SYRINGE_PORT, syringe_size=SYRINGE_SIZE)
-valve = ValveSelector(port=VALVE_PORT, num_positions=VALVE_POSITIONS)
-```
-
----
-
-## Next Steps
-
-!!! success "Installation Complete!"
-    **Your SIA-CE system is ready for automated analysis!**
-    
-    Start with the **[First Analysis Tutorial](tutorials/first-analysis.md)** or explore:
-    - [ChemStation API Documentation](chemstation-api/introduction.md)
-    - [SIA Workflows](sia-api/workflows.md)
-    - [Troubleshooting Guide](troubleshooting.md)

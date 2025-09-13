@@ -2,7 +2,9 @@
 
 ## Overview
 
-The `PreparedSIMethods` class provides high-level automation workflows that combine SI sample preparation with Capillary Electrophoresis analysis. These workflows handle complex sequences of operations for complete analytical automation.
+The `PreparedSIMethods` class provides high-level automation workflows that combine SI sample preparation with Capillary Electrophoresis system. These workflows handle complex sequences of operations for complete analytical automation.
+
+Napsat že to obsahuje skript a konfigurák
 
 ## System Integration
 
@@ -44,7 +46,7 @@ workflow.system_initialization_and_cleaning(
 2. Holding coil flushing with methanol
 3. DI water rinse cycles
 4. Transfer line conditioning
-5. Air bubble creation for separation
+5. Air bubble creation for separation kapaliny v holding coil a ventilem
 
 ### Sample Handling Integration
 
@@ -52,13 +54,11 @@ The workflows automatically coordinate between SI preparation and CE autosampler
 
 ```python
 # Load vial to CE replenishment position
-workflow.load_to_replenishment(vial_number=15)
 
 # Perform SI operations on loaded vial
 workflow.continuous_fill(vial=15, volume=500, solvent_port=3)
 
 # Unload vial back to carousel  
-workflow.unload_from_replenishment()
 ```
 
 ## Flow Modes
@@ -127,8 +127,8 @@ workflow.batch_fill(
 ### Automated Dilution
 
 ```python
-def prepare_dilution_series():
-    """Prepare 1:10 dilution series"""
+def add_solvent():
+    """Add solvent k serii vialek"""
     
     # Initialize system
     workflow.system_initialization_and_cleaning()
@@ -137,6 +137,8 @@ def prepare_dilution_series():
     workflow.prepare_continuous_flow(solvent_port=3)  # DI water
     
     sample_vials = [15, 16, 17, 18, 19]
+    volme_solvent = 1000
+    solvent_port = 3
     
     for vial in sample_vials:
         # Add 900 µL diluent (for 1:10 dilution)
@@ -144,10 +146,9 @@ def prepare_dilution_series():
             vial=vial,
             volume=900,
             solvent_port=3,
-            flush_needle=None  # No wash between same solvent
         )
         
-        print(f"Vial {vial}: Add 100 µL sample manually")
+        print(f"Vial {vial}: Add {volume_solvent} µL")
     
     print("All dilutions prepared - add samples as indicated")
 
@@ -217,124 +218,6 @@ workflow.homogenize_by_air_mixing(
 )
 ```
 
-## Complete Analytical Workflows
-
-### Automated Analysis
-
-```python
-def analysis_workflow():
-    """Complete sample preparation and analysis"""
-
-    # Sample preparation
-    samples = [10, 11, 12, 13]
-    method_name = "CE_Protein_Analysis"
-
-    ce_api.validation.list_vial_validation(samples)
-    ce_api.validation.validate_method(method_name)
-
-    # System initialization
-    workflow.system_initialization_and_cleaning()
-    
-    # Prepare buffer dilutions  
-    workflow.prepare_continuous_flow(solvent_port=6)  # Buffer
-    
-    for vial in samples:
-        # Add buffer
-        workflow.continuous_fill(
-            vial=vial,
-            volume=500,      # 500 µL buffer
-            solvent_port=6,
-            flush_needle=25
-        )
-    
-    print("Samples ready for CE analysis")
-
-    workflow.prepare_for_liquid_homogenization()
-
-    # Proceed with CE analysis using ChemStation integration
-    for vial in samples:
-    
-        #čekání až bude možné použít carousel
-        while ce_api.system.RC_status() not in ["Idle", "Run"]:
-            time.sleep(5)
-
-        #homogenizace vzorku před analýzou
-        workflow.homogenize_by_liquid_mixing(
-            vial=vial,
-            volume_aspirate=200,
-            num_cycles=2,
-            aspirate_speed=1000,  # Gentle
-            dispense_speed=1200
-        )
-
-        #čekání až bude systém připraven na spuštění analýzy
-        ce_api.system.ready_to_start_analysis()
-
-        #spuštění analýzy s parametry
-        ce_api.method.execution_method_with_parameters(
-            vial=vial,
-            method_name="CE_Protein_Analysis",
-            sample_name=f"Protein_Sample_{vial}"
-        )
-
-analysis_workflow()
-```
-
-## Configuration and Optimization
-
-### Custom Port Configuration
-
-```python
-from SI_API.methods import create_custom_config
-
-# Create custom port mapping
-custom_ports = create_custom_config(
-    waste_port=8,        # Move waste to end
-    air_port=1,          # Air at beginning  
-    di_port=2,           # Water nearby
-    transfer_port=7,     # Transfer near waste
-    meoh_port=3,         # Cleaning solvents grouped
-    buffer_port=4,       # Sample prep solvents  
-    sample_port=5        # Sample input
-)
-
-# Use custom configuration
-workflow = PreparedSIMethods(
-    chemstation_controller=ce_api,
-    syringe_device=syringe,
-    valve_device=valve,
-    ports_config=custom_ports
-)
-```
-
-### Performance Optimization
-
-```python
-# Optimize for speed
-speed_config = {
-    'speed_fast': 4000,           # Fast transfers
-    'speed_normal': 2500,         # Normal operations  
-    'wait_after_aspirate': 0.5,   # Minimal delays
-    'wait_after_dispense': 0.2,
-    'homogenization_liquid_cycles': 1,  # Fewer mixing cycles
-    'verbose': False              # Reduce output for speed
-}
-
-workflow.update_config(**speed_config)
-
-# Optimize for precision  
-precision_config = {
-    'speed_fast': 2000,           # Slower, more controlled
-    'speed_normal': 1200,
-    'wait_after_aspirate': 2.0,   # Allow settling
-    'wait_after_dispense': 1.0,
-    'homogenization_liquid_cycles': 4,  # More thorough mixing
-    'verbose': True               # Full feedback
-}
-
-workflow.update_config(**precision_config)
-```
-
 ## Best Practices
 
 ### 1. Always Initialize First
@@ -369,56 +252,4 @@ print(f"Port assignments: {status['port_assignments']}")
 
 ## Custom Configuration
 
-### Port Configuration
-```python
-from SI_API.methods import create_custom_config
-
-# Create custom port mapping
-custom_ports = create_custom_config(
-    waste_port=8,        # Move waste to end
-    air_port=1,          # Air at beginning  
-    di_port=2,           # Water nearby
-    transfer_port=7,     # Transfer near waste
-    meoh_port=3          # Cleaning solvents grouped
-)
-
-# Use custom configuration
-workflow = PreparedSIMethods(
-    chemstation_controller=ce_api,
-    syringe_device=syringe,
-    valve_device=valve,
-    ports_config=custom_ports
-)
-```
-
-### Performance Optimization
-```python
-# Optimize for speed
-workflow.update_config(
-    speed_fast=4000,
-    speed_normal=2500,
-    wait_after_dispense=0.2,
-    verbose=False
-)
-
-# Optimize for precision  
-workflow.update_config(
-    speed_fast=2000,
-    speed_normal=1200,
-    wait_after_aspirate=2.0,
-    homogenization_liquid_cycles=4,
-    verbose=True
-)
-```
-
-## Advanced Integration
-
-The SI-CE integration enables sophisticated analytical workflows:
-
-- **Unattended operation**: Complete sample prep and analysis
-- **Method development**: Automated optimization studies  
-- **Quality control**: Reproducible sample handling
-- **High throughput**: Parallel processing capabilities
-- **Adaptive methods**: Sample-specific preparations
-
-This integration transforms manual, time-intensive procedures into fully automated analytical workflows suitable for research, quality control, and routine analysis applications.
+nějak tady popiš konfigurák

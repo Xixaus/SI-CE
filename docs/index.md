@@ -29,33 +29,30 @@ Connection of these techniques provides user with:
 - Comprehensive method and sequence management
 - Real-time instrument status monitoring
 - Automated vial handling
+- Něco o tom, že je to přispůsobeno pro CE 7100
 
 ### SIA API
-- Precise syringe pump control (Hamilton MVP compatible)
-- Multi-position valve automation (VICI compatible)
+- Ovládání SI zařízení skrze COM porty
+- Moduly pro ventil (VICI) a stříkačku (Cavro XCalibur)
 - Pre-built workflows for common operations
-- Volume tracking and safety features
-- Flexible port configuration
 
-### Integration Benefits
-- Seamless coordination between sample preparation and analysis
-- One unified Python interface for complete workflow control
-- Reduced analysis time through parallel operations
-- Consistent and reproducible analytical procedures
 
 ## Code preview
 
 ```python
 from ChemstationAPI import ChemstationAPI
+from SIA_API.devices import SyringeController, ValveSelector
 from SIA_API.methods import PreparedSIAMethods
 
 # Initialize systems
+syringe = SyringeController(port="COM8", syringe_size=1000)
+valve = ValveSelector(port="COM8", num_positions=8)
 ce = ChemstationAPI()
 sia = PreparedSIAMethods(ce, syringe, valve)
 
 # Automated workflow
 sia.system_initialization_and_cleaning()
-sia.continuous_fill(vial=15, volume=1500, solvent_port=5)
+sia.batch_fill(vial=15, volume=1500, solvent_port=5)
 ce.method.execution_method_with_parameters(
     vial=15, 
     method_name="Protein_Analysis",
@@ -63,29 +60,6 @@ ce.method.execution_method_with_parameters(
 )
 ```
 
-## Documentation Overview
-
-This documentation is organized to help you quickly find what you need:
-
-- **[Getting Started](getting-started.md)**: Installation and first steps
-- **[ChemStation API](chemstation-api/introduction.md)**: Control your ChemStation system
-- **[SIA API](sia-api/introduction.md)**: Automate sample preparation
-- **[Tutorials](tutorials/first-analysis.md)**: Step-by-step guides
-- **[API Reference](api-reference/chemstation.md)**: Complete function documentation
-
-## System Requirements
-
-### Hardware
-- Agilent 7100 Capillary Electrophoresis System
-- Cavro CX Syringe Pump
-- VICI or compatible valve selector
-- Windows PC with available COM ports
-
-### Software
-- Windows 7 or higher
-- OpenLab CDS ChemStation Edition
-- Python 3.7+
-- Required Python packages (see [Getting Started](getting-started.md))
 
 ## Support and Contributing
 
@@ -93,7 +67,3 @@ This documentation is organized to help you quickly find what you need:
 - **Discussions**: Join our [community discussions](https://github.com/yourusername/SIA-CE/discussions)
 - **Contributing**: See our [contribution guidelines](https://github.com/yourusername/SIA-CE/blob/main/CONTRIBUTING.md)
 
----
-
-!!! tip "Ready to start?"
-    Head to [Getting Started](getting-started.md) to install the package and run your first automated analysis!

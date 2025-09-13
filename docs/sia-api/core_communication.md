@@ -63,19 +63,13 @@ device.send_command(
 
 **Important**: The wait_for_completion function is called while the serial port remains open. This allows for continuous monitoring or additional operations during the waiting period.
 
-### Response Timeout Control
-```python
-# Short timeout for quick responses
-status = device.send_command("QUICK_STATUS?", get_response=True, response_timeout=2)
-
-# Long timeout for slow operations
-result = device.send_command("CALIBRATE", get_response=True, response_timeout=60)
-```
 
 ## Custom Device Integration
 
 ### Arduino Example
 If you have a pre-programmed Arduino controlling a custom stirrer:
+
+Udělat to pobrobněji krok po kroku a vysvětlit jak funguje sestavování nového modulu, že je potřeba zjistit si příkazy, které se budou odesílat (a Arduina to bude naprogramované ale u jiných to může být v dokumetaci zařízení)
 
 ```python
 class StirrerController(CommandSender):
@@ -102,37 +96,6 @@ stirrer = StirrerController("COM5")
 stirrer.start_stirring(500)  # 500 RPM
 current_temp = stirrer.get_temperature()
 stirrer.stop_stirring()
-```
-
-## Different Communication Protocols
-
-```python
-# Cavro syringe style (SyringeController)
-syringe = CommandSender(port="COM3", prefix="", address="/1")
-syringe.send_command("A1000R")  # Aspirate 1000 steps
-# Sends: "/1A1000R\r"
-
-# VICI valve style (ValveSelector)  
-valve = CommandSender(port="COM4", prefix="/Z", address="")
-valve.send_command("GO3")  # Go to position 3
-# Sends: "/ZGO3\r"
-
-# Custom device protocol
-custom = CommandSender(port="COM5", prefix="@", address="01")
-custom.send_command("RUN")  # Start operation
-# Sends: "@01RUN\r"
-```
-
-## Error Handling
-
-```python
-try:
-    device = CommandSender("COM3")
-    response = device.send_command("STATUS?", get_response=True)
-except serial.SerialException as e:
-    print(f"Connection failed: {e}")
-except TimeoutError:
-    print("Device didn't respond in time")
 ```
 
 The CommandSender design allows easy integration with any device that uses serial communication by understanding the device's command protocol and implementing the appropriate prefix, address, and command formatting.
