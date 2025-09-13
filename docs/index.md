@@ -1,10 +1,8 @@
 # SI-CE Integration Package
 
-## Automated Capillary Electrophoresis with Sequential Injection
+A Python package for automated control of Agilent ChemStation CE systems integrated with Sequential Injection (SI) hardware. Enables programmatic sample preparation, method execution, and data acquisition for analytical chemistry workflows.
 
-Welcome to the SI-CE Integration documentation. This package provides a unified Python interface for controlling Agilent ChemStation CE systems and Sequential Injection (SI) hardware, enabling fully automated analytical workflows. 
-
-Specific coding mentioned later in text was developed for Openlab ChemStation ver. C.01.07 SR2 [255] with use of instrumentation consisting of Agilent Technologies 7100 Capillary Electrophoresis (CE) in combination with sequential injection (SI) system. Compatibility with different systems was not tested and specific use is left on user consideration.
+This package was developed for OpenLab ChemStation ver. C.01.07 SR2 [255] with Agilent Technologies 7100 Capillary Electrophoresis system combined with sequential injection components. Compatibility with other systems has not been tested.
 
 !!! info "Project Status"
     This project is actively developed.
@@ -25,16 +23,15 @@ Connection of these techniques provides user with:
 ## Key Features
 
 ### ChemStation API
-- Direct control of OpenLab CDS ChemStation by command processor
-- Comprehensive method and sequence management
-- Real-time instrument status monitoring
-- Automated vial handling
-- Něco o tom, že je to přispůsobeno pro CE 7100
+- Direct communication with OpenLab CDS ChemStation command processor
+- Method and sequence management functions
+- Instrument status monitoring and control
+- Automated vial handling for CE7100 systems
 
-### SIA API
-- Ovládání SI zařízení skrze COM porty
-- Moduly pro ventil (VICI) a stříkačku (Cavro XCalibur)
-- Pre-built workflows for common operations
+### SIA API  
+- Serial communication modules for SI hardware
+- Device controllers for syringe pumps (Cavro XCalibur) and valve selectors (VICI)
+- Pre-configured workflows for common analytical procedures
 
 
 ## Code preview
@@ -42,21 +39,19 @@ Connection of these techniques provides user with:
 ```python
 from ChemstationAPI import ChemstationAPI
 from SIA_API.devices import SyringeController, ValveSelector
-from SIA_API.methods import PreparedSIAMethods
+from SIA_API.methods import PreparedSIMethods
 
-# Initialize systems
-syringe = SyringeController(port="COM8", syringe_size=1000)
-valve = ValveSelector(port="COM8", num_positions=8)
+# Initialize system components
 ce = ChemstationAPI()
-sia = PreparedSIAMethods(ce, syringe, valve)
+syringe = SyringeController(port="COM3", syringe_size=1000)
+valve = ValveSelector(port="COM4", num_positions=8)
+workflow = PreparedSIMethods(ce, syringe, valve)
 
-# Automated workflow
-sia.system_initialization_and_cleaning()
-sia.batch_fill(vial=15, volume=1500, solvent_port=5)
+# Automated sample preparation and analysis
+workflow.system_initialization_and_cleaning()
+workflow.batch_fill(vial=15, volume=1500, solvent_port=3)
 ce.method.execution_method_with_parameters(
-    vial=15, 
-    method_name="Protein_Analysis",
-    sample_name="BSA_Standard"
+    vial=15, method_name="Protein_Analysis", sample_name="Sample_001"
 )
 ```
 
