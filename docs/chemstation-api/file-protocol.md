@@ -139,11 +139,12 @@ method_path = api.send("response$ = _METHPATH$")
 
 1. **ChemStation macro not running** - The communication macro must be active in ChemStation
    
-   **Solution:** In ChemStation command line, execute:
+    **Solution:** In ChemStation command line, execute:
    ```chemstation
    macro "path\to\ChemPyConnect.mac"; Python_Run
    ```
    Look for "Start Python communication" message.
+
 
 2. **Error dialog appeared in ChemStation** - Communication is blocked while dialog is open
    
@@ -180,14 +181,3 @@ except ChemstationError as e:
     print(f"ChemStation Error: {e}")
     # Output: ERROR: Method file 'NonExistentMethod.M' not found
 ```
-
----
-
-!!! tip "Protocol Reliability"
-    The file-based protocol is extremely reliable once properly configured. Most issues stem from:
-    1. **Macro not running** - Always verify macro status first  
-    2. **ChemStation error dialogs** - Check for open dialogs blocking communication
-    3. **File permission problems** - Run as administrator or check antivirus
-
-!!! info "Performance Notes"
-    While file-based communication adds slight overhead compared to direct connections, the reliability benefits far outweigh the minimal performance impact. Typical command execution times are 50-200ms depending on command complexity.

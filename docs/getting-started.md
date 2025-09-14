@@ -18,7 +18,7 @@ This guide covers installation and initial system configuration for automated ca
 ## Installation
 
 ### Download and Install
-1. **Download** the package from the project repository
+1. **Download** the package from the project repository ([download link](https://github.com/Xixaus/SI-CE/archive/refs/heads/main.zip))
 2. **Extract** to desired location (e.g., `C:\SIA-CE\`)
 3. **Install dependencies** by double-clicking `install.bat`
 
