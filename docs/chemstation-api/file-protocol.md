@@ -68,31 +68,6 @@ print(f"Current method path: {method_path}")
 124 C:\Chem32\1\Methods\CE\Default\
 ```
 
-### Complex Commands with Parameters
-
-```python
-# Setting system variables
-api.send('_SAMPLE$ = "Sample_001"')
-
-# Executing methods with parameters  
-api.send('RunMethod _DATAPATH$,, _SAMPLE$')
-
-# Querying instrument status
-status = api.send("response$ = VAL$(_MethodOn)")
-is_running = bool(int(status))
-```
-
-### Direct Module Communication
-
-```python
-# Send command to CE module
-api.send('WriteModule "CE1", "FLSH 60,-2,-2"')  # 60s flush
-
-# Query module status
-response = api.send('response$ = SendModule$("CE1", "TRAY:GETVIALSTATE? 15")')
-vial_state = response[-1]  # Get state code
-```
-
 ---
 
 ## File Structure
@@ -146,26 +121,12 @@ from ChemstationAPI import ChemstationAPI
 config = CommunicationConfig(verbose=True)
 api = ChemstationAPI(config)
 
-# All commands and responses will be logged
+# All commands and responses will be logged to console
 method_path = api.send("response$ = _METHPATH$")
 
 # Console output:
 # Sending command 1: response$ = _METHPATH$
 # Received response 1: C:\Chem32\1\Methods\CE\Migration\
-```
-
-### Monitor Communication Files
-
-You can monitor the communication files directly for debugging:
-
-**PowerShell (Windows):**
-```powershell
-Get-Content "communication_files\command" -Wait
-```
-
-**Command Prompt:**
-```cmd
-type communication_files\response
 ```
 
 ---
@@ -174,49 +135,35 @@ type communication_files\response
 
 ### No Response Received (TimeoutError)
 
-**Most common cause:** ChemStation macro not running
+**Most common causes:**
 
-**Solution:**
-1. In ChemStation command line, execute:
+1. **ChemStation macro not running** - The communication macro must be active in ChemStation
+   
+   **Solution:** In ChemStation command line, execute:
    ```chemstation
    macro "path\to\ChemPyConnect.mac"; Python_Run
    ```
-2. Look for "Start Python communication" message
-3. If message doesn't appear, check macro path
+   Look for "Start Python communication" message.
 
-### File Access Issues
+2. **Error dialog appeared in ChemStation** - Communication is blocked while dialog is open
+   
+   **Solution:** Check ChemStation for any open error dialogs or message boxes. Close all dialogs and try again. This commonly occurs when:
+   - Starting a method while another is running
+   - Attempting operations on non-existent files
+   - Hardware communication errors
 
-**Symptoms:** Permission denied, cannot create files
+3. **Incorrect paths in macro** - Macro is running but using wrong communication directory
+   
+   **Solution:** Check that the path in `ChemPyConnect.mac` matches your actual communication files directory. The macro contains a hardcoded path that may need updating for your installation.
 
-**Solutions:**
-1. **Run as Administrator** - Right-click Python IDE and select "Run as administrator"
-2. **Check antivirus** - Add communication directory to antivirus exclusions
-3. **Verify paths** - Ensure communication directory exists and is writable
+### Test Communication
 
-### Wrong Response or No Response
-
-**Quick fixes:**
-1. **Restart ChemStation** if responses seem corrupted
-2. **Check multiple Python instances** - only one should communicate at a time
-3. **Test basic command:**
-   ```python
-   try:
-       api.send("Print 'Test'", timeout=1.0)
-       print("✓ Communication working")
-   except TimeoutError:
-       print("✗ No response - check macro")
-   ```
-
-### Communication Slow or Unreliable
-
-**Optimization:**
 ```python
-# Adjust communication settings
-config = CommunicationConfig(
-    retry_delay=0.05,    # Faster polling (50ms)
-    max_retries=10,      # More attempts
-    verbose=False        # Disable logging for speed
-)
+try:
+    api.send("Print 'Test'", timeout=1.0)
+    print("✓ Communication working")
+except TimeoutError:
+    print("✗ No response - check macro and dialogs")
 ```
 
 ---
@@ -239,8 +186,8 @@ except ChemstationError as e:
 !!! tip "Protocol Reliability"
     The file-based protocol is extremely reliable once properly configured. Most issues stem from:
     1. **Macro not running** - Always verify macro status first  
-    2. **File permission problems** - Run as administrator or check antivirus
-    3. **Multiple Python instances** - Avoid concurrent communication attempts
+    2. **ChemStation error dialogs** - Check for open dialogs blocking communication
+    3. **File permission problems** - Run as administrator or check antivirus
 
 !!! info "Performance Notes"
     While file-based communication adds slight overhead compared to direct connections, the reliability benefits far outweigh the minimal performance impact. Typical command execution times are 50-200ms depending on command complexity.
