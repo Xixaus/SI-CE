@@ -12,13 +12,13 @@
         <meta name="author" content="Richard Maršala">
       
       
-        <link rel="canonical" href="https://github.com/Xixaus/SI-CE/tutorials/chemstation-macros/">
+        <link rel="canonical" href="https://github.com/Xixaus/SI-CE/chemstation-api/macro_tutorial/">
       
       
-        <link rel="prev" href="../sia-ce-integration/">
+        <link rel="prev" href="../validation/">
       
       
-        <link rel="next" href="../../api-reference/chemstation-api/">
+        <link rel="next" href="../../sia-api/sia_introduction/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>ChemStation Macros - SI-CE Integration</title>
+        <title>Macro tutorial - SI-CE Integration</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemstation-scripting-and-macros-complete-guide" class="md-skip">
+        <a href="#chemstation-macros-complete-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemStation Macros
+              Macro tutorial
             
           </span>
         </div>
@@ -263,11 +263,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../chemstation-api/introduction/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introduction/" class="md-tabs__link">
           
   
   
@@ -303,17 +305,15 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../first-analysis/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../tutorials/calibration/" class="md-tabs__link">
           
   
   
-  Tutorials
+  Examples
 
         </a>
       </li>
@@ -356,18 +356,17 @@
   
   
   
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../appendix/faq/" class="md-tabs__link">
-          
+    <li class="md-tabs__item">
+      <a href="../../appendix/faq/" class="md-tabs__link">
+        
   
   
-  Apeendix
+    
+  
+  FAQ
 
-        </a>
-      </li>
-    
+      </a>
+    </li>
   
 
       
@@ -464,28 +463,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -498,7 +500,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             ChemStation API
@@ -512,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chemstation-api/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         
   
   
@@ -535,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chemstation-api/file-protocol/" class="md-nav__link">
+      <a href="../file-protocol/" class="md-nav__link">
         
   
   
@@ -558,12 +560,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chemstation-api/basic-operations/" class="md-nav__link">
+      <a href="../ce/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Basic Operations
+    CE module
     
   </span>
   
@@ -581,12 +583,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chemstation-api/methods-sequences/" class="md-nav__link">
+      <a href="../method/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Methods & Sequences
+    Method module
     
   </span>
   
@@ -604,87 +606,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chemstation-api/troubleshooting/" class="md-nav__link">
+      <a href="../sequence/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Troubleshooting
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    SIA API
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            SIA API
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sia-api/sia_introduction/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Introduction
+    Sequence module
     
   </span>
   
@@ -702,12 +629,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sia-api/core_communication/" class="md-nav__link">
+      <a href="../system/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Core comunication
+    System module
     
   </span>
   
@@ -725,182 +652,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sia-api/syringe_control/" class="md-nav__link">
+      <a href="../validation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Syringe Controller
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sia-api/valve_control/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Valve Selector
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sia-api/ce_workflows/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Workflows
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Tutorials
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Tutorials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../first-analysis/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    First Analysis
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../batch-processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Batch Processing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sia-ce-integration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SIA-CE Integration
+    Validation module
     
   </span>
   
@@ -932,7 +689,7 @@
   
   
   <span class="md-ellipsis">
-    ChemStation Macros
+    Macro tutorial
     
   </span>
   
@@ -945,7 +702,7 @@
   
   
   <span class="md-ellipsis">
-    ChemStation Macros
+    Macro tutorial
     
   </span>
   
@@ -1262,13 +1019,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-quick-troubleshooting" class="md-nav__link">
+  <a href="#8-practical-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      10. Quick Troubleshooting
+      8. Practical Examples
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. Quick Troubleshooting">
+    <nav class="md-nav" aria-label="8. Practical Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-sample-analysis-macro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Sample Analysis Macro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-data-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry Data Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-status-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Status Monitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-quick-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Quick Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Quick Troubleshooting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1294,10 +1093,307 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#10-advanced-registry-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Advanced Registry Exploration
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    SIA API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            SIA API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sia-api/sia_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sia-api/core_communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core comunication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sia-api/syringe_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syringe Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sia-api/valve_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Valve Selector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sia-api/ce_workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calibration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/homogenization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Batch Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/sample_processor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SIA-CE Integration
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1803,51 +1899,6 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Apeendix
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Apeendix
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../appendix/faq/" class="md-nav__link">
         
@@ -1860,14 +1911,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2193,13 +2236,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-quick-troubleshooting" class="md-nav__link">
+  <a href="#8-practical-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      10. Quick Troubleshooting
+      8. Practical Examples
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. Quick Troubleshooting">
+    <nav class="md-nav" aria-label="8. Practical Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-sample-analysis-macro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Sample Analysis Macro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-data-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry Data Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-status-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Status Monitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-quick-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Quick Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Quick Troubleshooting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2225,6 +2310,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#10-advanced-registry-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Advanced Registry Exploration
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2244,13 +2338,12 @@
   
 
 
-<h1 id="chemstation-scripting-and-macros-complete-guide">ChemStation Scripting and Macros - Complete Guide<a class="headerlink" href="#chemstation-scripting-and-macros-complete-guide" title="Permanent link">&para;</a></h1>
-<p>This comprehensive guide covers the practical fundamentals of scripting in Agilent ChemStation, including detailed registry operations and RC.NET module interactions.</p>
+<h1 id="chemstation-macros-complete-guide">ChemStation Macros - Complete Guide<a class="headerlink" href="#chemstation-macros-complete-guide" title="Permanent link">&para;</a></h1>
+<p>Comprehensive guide to ChemStation's built-in scripting capabilities for automation of analytical workflows.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>ChemStation's built-in scripting capabilities enable powerful automation of analytical workflows. This guide provides hands-on examples and best practices for creating automation solutions.</p>
+<p>ChemStation includes a command processor (CP) that interprets and executes commands interactively or through scripts. This guide provides hands-on examples and best practices for creating automation solutions.</p>
 <hr />
 <h2 id="1-chemstation-commands">1. ChemStation Commands<a class="headerlink" href="#1-chemstation-commands" title="Permanent link">&para;</a></h2>
-<p>ChemStation includes a command processor (CP) that interprets and executes commands interactively or through scripts.</p>
 <h3 id="basic-command-syntax">Basic Command Syntax<a class="headerlink" href="#basic-command-syntax" title="Permanent link">&para;</a></h3>
 <p><strong>Display Messages:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Print &quot;This is a message&quot;
@@ -2275,7 +2368,7 @@ Use <code>↑</code> and <code>↓</code> arrow keys to navigate through previou
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>EndMacro
 </code></pre></div>
 <h3 id="macro-parameters">Macro Parameters<a class="headerlink" href="#macro-parameters" title="Permanent link">&para;</a></h3>
-<p>Macros can accept parameters for flexible operation. Parameters are declared using the <code>Parameter</code> statement:</p>
+<p>Macros can accept parameters for flexible operation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Name InjectSample
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    Parameter SampleName$, VialPos, InjVol
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    Print &quot;Sample=&quot;, SampleName$, &quot;, Vial=&quot;, VialPos, &quot;, InjVol=&quot;, InjVol
@@ -2285,7 +2378,7 @@ Use <code>↑</code> and <code>↓</code> arrow keys to navigate through previou
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>InjectSample &quot;Std_1&quot;, 5, 10
 </code></pre></div></p>
 <h3 id="local-variables">Local Variables<a class="headerlink" href="#local-variables" title="Permanent link">&para;</a></h3>
-<p>Define local variables within macros using the <code>Local</code> statement:</p>
+<p>Define local variables within macros:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Name CalculateVolume
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    Local Area, Volume, Concentration
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    Area = 2.5
@@ -2294,10 +2387,12 @@ Use <code>↑</code> and <code>↓</code> arrow keys to navigate through previou
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    Print &quot;Calculated Volume =&quot;, Volume
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>EndMacro
 </code></pre></div>
-<p><strong>Variable Scope:</strong>
-- Local variables exist only within the macro
-- Global variables persist throughout the ChemStation session
-- Use local variables to prevent naming conflicts</p>
+<p><strong>Variable Scope:</strong></p>
+<ul>
+<li>Local variables exist only within the macro</li>
+<li>Global variables persist throughout the ChemStation session</li>
+<li>Use local variables to prevent naming conflicts</li>
+</ul>
 <hr />
 <h2 id="3-loading-and-managing-macros">3. Loading and Managing Macros<a class="headerlink" href="#3-loading-and-managing-macros" title="Permanent link">&para;</a></h2>
 <h3 id="loading-macros">Loading Macros<a class="headerlink" href="#loading-macros" title="Permanent link">&para;</a></h3>
@@ -2323,7 +2418,6 @@ Use <code>↑</code> and <code>↓</code> arrow keys to navigate through previou
 </code></pre></div></p>
 <hr />
 <h2 id="4-variables-and-data-types">4. Variables and Data Types<a class="headerlink" href="#4-variables-and-data-types" title="Permanent link">&para;</a></h2>
-<p>ChemStation supports several variable types for different data handling needs.</p>
 <h3 id="variable-types">Variable Types<a class="headerlink" href="#variable-types" title="Permanent link">&para;</a></h3>
 <p><strong>String Variables:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Sample$ = &quot;Test_Sample_001&quot;
@@ -2336,12 +2430,14 @@ Use <code>↑</code> and <code>↓</code> arrow keys to navigate through previou
 </code></pre></div></p>
 <h3 id="system-variables">System Variables<a class="headerlink" href="#system-variables" title="Permanent link">&para;</a></h3>
 <p>ChemStation provides built-in system variables for accessing current state information:</p>
-<p><strong>Common System Variables:</strong>
-- <code>_DataFile$</code> - Current data file name
-- <code>_MethodOn</code> - Method status (0=off, 1=on)
-- <code>_SequenceOn</code> - Sequence status (0=off, 1=on)
-- <code>_AutoPath$</code> - Automatic data path
-- <code>_Instrument$</code> - Current instrument configuration</p>
+<p><strong>Common System Variables:</strong></p>
+<ul>
+<li><code>_DataFile$</code> - Current data file name</li>
+<li><code>_MethodOn</code> - Method status (0=off, 1=on)</li>
+<li><code>_SequenceOn</code> - Sequence status (0=off, 1=on)</li>
+<li><code>_AutoPath$</code> - Automatic data path</li>
+<li><code>_Instrument$</code> - Current instrument configuration</li>
+</ul>
 <p><strong>Display all system variables:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Show Variables
 </code></pre></div></p>
@@ -2349,12 +2445,14 @@ Use <code>↑</code> and <code>↓</code> arrow keys to navigate through previou
 <h2 id="5-registry-operations">5. Registry Operations<a class="headerlink" href="#5-registry-operations" title="Permanent link">&para;</a></h2>
 <p>Registries are ChemStation's primary data containers, storing complex information about analyses, methods, chromatograms, and spectra.</p>
 <h3 id="understanding-registry-structure">Understanding Registry Structure<a class="headerlink" href="#understanding-registry-structure" title="Permanent link">&para;</a></h3>
-<p><strong>Registry Hierarchy:</strong>
-- <strong>Registry</strong> - Top-level container (e.g., ChromReg for chromatograms)
-- <strong>Objects</strong> - Individual data items within registry (e.g., ChromReg[1])
-- <strong>Headers</strong> - Metadata about objects
-- <strong>Data Blocks</strong> - Raw analytical data
-- <strong>Tables</strong> - Processed results (peaks, quantification)</p>
+<p><strong>Registry Hierarchy:</strong></p>
+<ul>
+<li><strong>Registry</strong> - Top-level container (e.g., ChromReg for chromatograms)</li>
+<li><strong>Objects</strong> - Individual data items within registry (e.g., ChromReg[1])</li>
+<li><strong>Headers</strong> - Metadata about objects</li>
+<li><strong>Data Blocks</strong> - Raw analytical data</li>
+<li><strong>Tables</strong> - Processed results (peaks, quantification)</li>
+</ul>
 <h3 id="basic-registry-operations">Basic Registry Operations<a class="headerlink" href="#basic-registry-operations" title="Permanent link">&para;</a></h3>
 <p><strong>Check registry size:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Print RegSize(ChromReg)
@@ -2390,22 +2488,24 @@ Use <code>↑</code> and <code>↓</code> arrow keys to navigate through previou
 <p><strong>Modify data points:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>SetData ChromReg[1], 1, 10, 1500.5  ! Set Y-value at point 10
 </code></pre></div></p>
-<p><strong>Advanced Registry Exploration:</strong>
-For comprehensive registry exploration, use the <code>register_reader.mac</code> utility to examine all available registry structures and data.</p>
 <hr />
 <h2 id="6-rcnet-module-control">6. RC.NET Module Control<a class="headerlink" href="#6-rcnet-module-control" title="Permanent link">&para;</a></h2>
 <p>RC.NET provides standardized communication with ChemStation modules like pumps, detectors, and autosamplers.</p>
 <h3 id="rcnet-registry-structure">RC.NET Registry Structure<a class="headerlink" href="#rcnet-registry-structure" title="Permanent link">&para;</a></h3>
 <p>Each module maintains three primary registries:</p>
-<p><strong>Registry Types:</strong>
-- <code>RC&lt;ModID&gt;&lt;#&gt;Method</code> - Method parameters and settings
-- <code>RC&lt;ModID&gt;&lt;#&gt;Status</code> - Real-time status information (pressures, temperatures)
-- <code>RC&lt;ModID&gt;&lt;#&gt;Config</code> - Module configuration (type, firmware version, serial number)</p>
-<p><strong>Example Module Identifiers:</strong>
-- <code>PMP1</code> - Quaternary Pump
-- <code>WLS1</code> - UV-Vis Detector<br />
-- <code>ALS1</code> - Autosampler
-- <code>CE1</code> - Capillary Electrophoresis</p>
+<p><strong>Registry Types:</strong></p>
+<ul>
+<li><code>RC&lt;ModID&gt;&lt;#&gt;Method</code> - Method parameters and settings</li>
+<li><code>RC&lt;ModID&gt;&lt;#&gt;Status</code> - Real-time status information (pressures, temperatures)</li>
+<li><code>RC&lt;ModID&gt;&lt;#&gt;Config</code> - Module configuration (type, firmware version, serial number)</li>
+</ul>
+<p><strong>Example Module Identifiers:</strong></p>
+<ul>
+<li><code>PMP1</code> - Quaternary Pump</li>
+<li><code>WLS1</code> - UV-Vis Detector  </li>
+<li><code>ALS1</code> - Autosampler</li>
+<li><code>CE1</code> - Capillary Electrophoresis</li>
+</ul>
 <h3 id="method-parameter-modification">Method Parameter Modification<a class="headerlink" href="#method-parameter-modification" title="Permanent link">&para;</a></h3>
 <p><strong>Standard method parameter workflow:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>! Upload current method to memory
@@ -2418,11 +2518,13 @@ For comprehensive registry exploration, use the <code>register_reader.mac</code>
 <a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>! Download modified method to instrument
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>DownloadRCMethod PMP1
 </code></pre></div></p>
-<p><strong>Common Method Parameters:</strong>
-- Flow rates: <code>"Flow"</code>, <code>"Flow_A"</code>, <code>"Flow_B"</code>
-- Temperatures: <code>"Temperature"</code>, <code>"ColTemp"</code>
-- Times: <code>"StopTime_Time"</code>, <code>"PostTime"</code>
-- Volumes: <code>"InjVol"</code>, <code>"MaxInjVol"</code></p>
+<p><strong>Common Method Parameters:</strong></p>
+<ul>
+<li>Flow rates: <code>"Flow"</code>, <code>"Flow_A"</code>, <code>"Flow_B"</code></li>
+<li>Temperatures: <code>"Temperature"</code>, <code>"ColTemp"</code></li>
+<li>Times: <code>"StopTime_Time"</code>, <code>"PostTime"</code></li>
+<li>Volumes: <code>"InjVol"</code>, <code>"MaxInjVol"</code></li>
+</ul>
 <h3 id="reading-module-status">Reading Module Status<a class="headerlink" href="#reading-module-status" title="Permanent link">&para;</a></h3>
 <p><strong>Current operational parameters:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Print ObjHdrVal(RCPMP1Status[1], &quot;Pressure&quot;)     ! Current pressure
@@ -2435,7 +2537,7 @@ For comprehensive registry exploration, use the <code>register_reader.mac</code>
 </code></pre></div></p>
 <h3 id="direct-module-communication">Direct Module Communication<a class="headerlink" href="#direct-module-communication" title="Permanent link">&para;</a></h3>
 <p><strong>Send command without response:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>WriteModule &quot;CE1&quot;, &quot;LRPL 10&quot;  ! Set reference wavelength
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>WriteModule &quot;CE1&quot;, &quot;LRPL 10&quot;  ! Load replenishment position 10
 </code></pre></div></p>
 <p><strong>Send command and get response:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Response$ = SendModule$(&quot;CE1&quot;, &quot;LIFTER:OCCUPIED? 3&quot;)  ! Check vial position
@@ -2457,56 +2559,153 @@ For comprehensive registry exploration, use the <code>register_reader.mac</code>
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>Process Name: C:\Chem32\CORE\ChemMain.exe;
 <a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>Extended Properties: ModuleShortname - Agilent.LCDrivers.Common.ModuleAccess;
 </code></pre></div></p>
-<p>Key Information:</p>
+<p><strong>Key Information:</strong></p>
 <ul>
 <li><strong>Module ID</strong>: <code>G7150A:DEDAD01310</code> (CE1)</li>
 <li><strong>Command</strong>: <code>LRPL 50</code> (Load Replenishment Position 50)</li>
 <li><strong>Response</strong>: <code>RA 00000</code> (Response Acknowledge - Success)</li>
 </ul>
 <h3 id="trace-analysis-workflow">Trace Analysis Workflow<a class="headerlink" href="#trace-analysis-workflow" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Monitor during operations:</strong></li>
+<p><strong>1. Monitor during operations:</strong></p>
+<ul>
 <li>Perform action in ChemStation interface (load vial, change parameter)</li>
-<li>
-<p>Check <code>C:\Chem32\1\TEMP\rcdriver.trc</code></p>
-</li>
-<li>
-<p><strong>Extract commands:</strong></p>
-</li>
+<li>Check <code>C:\Chem32\1\TEMP\rcdriver.trc</code></li>
+</ul>
+<p><strong>2. Extract commands:</strong></p>
+<ul>
 <li>Look for <code>Instruction:</code> entries</li>
-<li>
-<p>Note the exact module ID and command syntax</p>
-</li>
-<li>
-<p><strong>Test in Command Processor:</strong>
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>WriteModule &quot;CE1&quot;, &quot;LRPL 50&quot;  ! Load vial 50 to replenishment
+<li>Note the exact module ID and command syntax</li>
+</ul>
+<p><strong>3. Test in Command Processor:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>WriteModule &quot;CE1&quot;, &quot;LRPL 50&quot;  ! Load vial 50 to replenishment
 </code></pre></div></p>
-</li>
-</ol>
-<p><strong>Common Commands Discovered:</strong>
-- <code>LRPL n</code> - Load replenishment position
-- <code>LIFTER:OCCUPIED? n</code> - Check if vial n is present</p>
+<p><strong>Common Commands Discovered:</strong></p>
+<ul>
+<li><code>LRPL n</code> - Load replenishment position</li>
+<li><code>LIFTER:OCCUPIED? n</code> - Check if vial n is present</li>
+</ul>
 <hr />
-<h2 id="10-quick-troubleshooting">10. Quick Troubleshooting<a class="headerlink" href="#10-quick-troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
-<p><strong>Module communication fails:</strong>
-- Verify module is online: <code>Print RCModuleReady("PMP1")</code>
-- Restart ChemStation if persistent errors</p>
-<p><strong>Registry errors:</strong>
-- Check registry exists: <code>Print RegSize(ChromReg)</code><br />
-- Verify object number: <code>Print RegCont$(ChromReg)</code></p>
-<p><strong>Command not working:</strong>
-- Test in Command Processor first
-- Check trace logs for exact syntax
-- Verify module ID matches your system</p>
-<h3 id="quick-reference-commands">Quick Reference Commands<a class="headerlink" href="#quick-reference-commands" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>Show                          ! List all variables
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>RCListDevices$()             ! List RC.NET modules  
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>Print RegCont$(ChromReg)     ! Show registry contents
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>Remove MacroName             ! Unload macro
+<h2 id="8-practical-examples">8. Practical Examples<a class="headerlink" href="#8-practical-examples" title="Permanent link">&para;</a></h2>
+<h3 id="complete-sample-analysis-macro">Complete Sample Analysis Macro<a class="headerlink" href="#complete-sample-analysis-macro" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>Name AnalyzeSample
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    Parameter VialNumber, SampleName$, MethodName$
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    Local Response$
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    ! Load sample vial
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    WriteModule &quot;CE1&quot;, &quot;INLT &quot; + Val$(VialNumber)
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>    Sleep 3
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    ! Check vial loaded
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    Response$ = SendModule$(&quot;CE1&quot;, &quot;LIFTER:OCCUPIED? 1&quot;)
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>    If Response$ = &quot;0&quot; Then
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>        Print &quot;Error: Sample vial not loaded&quot;
+<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>        Return
+<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>    EndIf
+<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>
+<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a>    ! Load method
+<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a>    LoadMethod _METHPATH$, MethodName$ + &quot;.M&quot;
+<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a>
+<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a>    ! Set sample name
+<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>    _SAMPLE$ = SampleName$
+<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a>
+<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a>    ! Run analysis
+<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a>    RunMethod _DATAPATH$,, SampleName$
+<a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a>
+<a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a>    ! Wait for completion
+<a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a>    While _MethodOn = 1
+<a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a>        Sleep 10
+<a id="__codelineno-33-28" name="__codelineno-33-28" href="#__codelineno-33-28"></a>    EndWhile
+<a id="__codelineno-33-29" name="__codelineno-33-29" href="#__codelineno-33-29"></a>
+<a id="__codelineno-33-30" name="__codelineno-33-30" href="#__codelineno-33-30"></a>    ! Unload vial
+<a id="__codelineno-33-31" name="__codelineno-33-31" href="#__codelineno-33-31"></a>    WriteModule &quot;CE1&quot;, &quot;RINL&quot;
+<a id="__codelineno-33-32" name="__codelineno-33-32" href="#__codelineno-33-32"></a>
+<a id="__codelineno-33-33" name="__codelineno-33-33" href="#__codelineno-33-33"></a>    Print &quot;Analysis of &quot;, SampleName$, &quot; complete&quot;
+<a id="__codelineno-33-34" name="__codelineno-33-34" href="#__codelineno-33-34"></a>
+<a id="__codelineno-33-35" name="__codelineno-33-35" href="#__codelineno-33-35"></a>EndMacro
+</code></pre></div>
+<h3 id="registry-data-extraction">Registry Data Extraction<a class="headerlink" href="#registry-data-extraction" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Name ExtractPeakData
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    Parameter ChromNumber
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    Local PeakCount, i, RT, Area, Name$
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    ! Get number of peaks
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    PeakCount = TabSize(ChromRes[ChromNumber], &quot;Peak&quot;)
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    Print &quot;Peak Report for Chromatogram &quot;, ChromNumber
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>    Print &quot;RT(min)&quot;, Chr$(9), &quot;Area&quot;, Chr$(9), &quot;Name&quot;
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    ! Extract each peak
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>    For i = 1 To PeakCount
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>        RT = TabVal(ChromRes[ChromNumber], &quot;Peak&quot;, i, &quot;RT&quot;)
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>        Area = TabVal(ChromRes[ChromNumber], &quot;Peak&quot;, i, &quot;Area&quot;)
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>        Name$ = TabText$(ChromRes[ChromNumber], &quot;Peak&quot;, i, &quot;Name&quot;)
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>        Print RT, Chr$(9), Area, Chr$(9), Name$
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>    Next i
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>EndMacro
+</code></pre></div>
+<h3 id="system-status-monitor">System Status Monitor<a class="headerlink" href="#system-status-monitor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>Name MonitorSystem
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    Local Status$, Pressure, Temperature
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    While _MethodOn = 1
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>        ! Get system status
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>        Status$ = ObjHdrText$(RCCE1Status[1], &quot;RunState&quot;)
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>        Pressure = ObjHdrVal(RCCE1Status[1], &quot;Pressure&quot;)
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>        Temperature = ObjHdrVal(RCCE1Status[1], &quot;Temperature&quot;)
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>        Print &quot;Status: &quot;, Status$, &quot; | Pressure: &quot;, Pressure, &quot; | Temp: &quot;, Temperature
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>        Sleep 30  ! Check every 30 seconds
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>    EndWhile
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>    Print &quot;Analysis complete&quot;
+<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>
+<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>EndMacro
 </code></pre></div>
 <hr />
-<p><strong>For detailed registry exploration, use the provided <code>register_reader.mac</code> utility.</strong></p>
+<h2 id="9-quick-troubleshooting">9. Quick Troubleshooting<a class="headerlink" href="#9-quick-troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Module communication fails:</strong></p>
+<ul>
+<li>Verify module is online: <code>Print RCModuleReady("PMP1")</code></li>
+<li>Restart ChemStation if persistent errors</li>
+</ul>
+<p><strong>Registry errors:</strong></p>
+<ul>
+<li>Check registry exists: <code>Print RegSize(ChromReg)</code>  </li>
+<li>Verify object number: <code>Print RegCont$(ChromReg)</code></li>
+</ul>
+<p><strong>Command not working:</strong></p>
+<ul>
+<li>Test in Command Processor first</li>
+<li>Check trace logs for exact syntax</li>
+<li>Verify module ID matches your system</li>
+</ul>
+<h3 id="quick-reference-commands">Quick Reference Commands<a class="headerlink" href="#quick-reference-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>Show                          ! List all variables
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>RCListDevices$()             ! List RC.NET modules  
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>Print RegCont$(ChromReg)     ! Show registry contents
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>Remove MacroName             ! Unload macro
+</code></pre></div>
+<hr />
+<h2 id="10-advanced-registry-exploration">10. Advanced Registry Exploration<a class="headerlink" href="#10-advanced-registry-exploration" title="Permanent link">&para;</a></h2>
+<p>For comprehensive registry exploration, use the provided <code>register_reader.mac</code> utility to examine all available registry structures and data. This tool provides:</p>
+<ul>
+<li>Interactive registry browsing</li>
+<li>Object structure examination  </li>
+<li>Header and table data inspection</li>
+<li>Registry modification capabilities</li>
+</ul>
+<p><strong>Loading the registry reader:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># From Python API</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="n">api</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">add_register_reader</span><span class="p">()</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="c1"># Then in ChemStation:</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="c1"># Menu → Debug → Show Registers</span>
+</code></pre></div></p>
+<p>This tool is invaluable for understanding ChemStation's internal data structures and developing advanced automation scripts.</p>
 
 
 

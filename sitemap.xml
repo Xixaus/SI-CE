@@ -2,110 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://github.com/Xixaus/SI-CE/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/getting-started/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/chemstation-api/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/chemstation-ce/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/chemstation-exceptions/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/chemstation-methods/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/chemstation-sequence/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/chemstation-system/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/chemstation-validation/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/sia-config/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/sia-valve/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/api-reference/sia-workflows/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/appendix/faq/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
-         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/basic-operations/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/ce/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/chemstation-api/file-protocol/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/chemstation-api/introduction/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
-         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/methods-sequences/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/macro_tutorial/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
-         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/troubleshooting/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/method/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/sequence/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/system/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Xixaus/SI-CE/chemstation-api/validation/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/sia-api/ce_workflows/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/sia-api/core_communication/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/sia-api/sia_introduction/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/sia-api/syringe_control/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://github.com/Xixaus/SI-CE/sia-api/valve_control/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
-         <loc>https://github.com/Xixaus/SI-CE/tutorials/batch-processing/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <loc>https://github.com/Xixaus/SI-CE/tutorials/calibration/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
-         <loc>https://github.com/Xixaus/SI-CE/tutorials/chemstation-macros/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <loc>https://github.com/Xixaus/SI-CE/tutorials/homogenization/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
-         <loc>https://github.com/Xixaus/SI-CE/tutorials/first-analysis/</loc>
-         <lastmod>2025-09-07</lastmod>
-    </url>
-    <url>
-         <loc>https://github.com/Xixaus/SI-CE/tutorials/sia-ce-integration/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <loc>https://github.com/Xixaus/SI-CE/tutorials/sample_processor/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
 </urlset>

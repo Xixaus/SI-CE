@@ -12,13 +12,13 @@
         <meta name="author" content="Richard Maršala">
       
       
-        <link rel="canonical" href="https://github.com/Xixaus/SI-CE/chemstation-api/file-protocol/">
+        <link rel="canonical" href="https://github.com/Xixaus/SI-CE/chemstation-api/sequence/">
       
       
-        <link rel="prev" href="../introduction/">
+        <link rel="prev" href="../method/">
       
       
-        <link rel="next" href="../ce/">
+        <link rel="next" href="../system/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>File Protocol - SI-CE Integration</title>
+        <title>Sequence module - SI-CE Integration</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#file-based-communication-protocol" class="md-skip">
+        <a href="#sequence-module-batch-analysis-management" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              File Protocol
+              Sequence module
             
           </span>
         </div>
@@ -534,32 +534,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    File Protocol
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../file-protocol/" class="md-nav__link">
         
   
   
@@ -570,230 +548,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#protocol-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Protocol Overview
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Protocol Overview">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#design-inspiration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Design Inspiration
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      How It Works
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How It Works">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#communication-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Communication Flow
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#architecture-benefits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Architecture Benefits
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command-format-and-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command Format and Examples
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command Format and Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-commands-no-return-value" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Commands (No Return Value)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#commands-with-return-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commands with Return Values
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      File Structure
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="File Structure">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#file-content-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      File Content Format
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command-numbering" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command Numbering
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command Numbering">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#benefits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Benefits
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-communication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Monitoring Communication
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring Communication">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#enable-verbose-logging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enable Verbose Logging
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#no-response-received-timeouterror" class="md-nav__link">
-    <span class="md-ellipsis">
-      No Response Received (TimeoutError)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test-communication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test Communication
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Detection
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -849,10 +603,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../sequence/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Sequence module
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -863,6 +639,191 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-file-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequence File Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequence File Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load_sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_sequence()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save_sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_sequence()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-table-editing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequence Table Editing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequence Table Editing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modify_sequence_row" class="md-nav__link">
+    <span class="md-ellipsis">
+      modify_sequence_row()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excel-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excel Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Excel Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prepare_sequence_table" class="md-nav__link">
+    <span class="md-ellipsis">
+      prepare_sequence_table()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-execution-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequence Execution Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequence Execution Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start" class="md-nav__link">
+    <span class="md-ellipsis">
+      start()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pause" class="md-nav__link">
+    <span class="md-ellipsis">
+      pause()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      resume()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-sequence-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Sequence Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excel-based-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excel-Based Sequence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1768,19 +1729,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#protocol-overview" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Protocol Overview
+      Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Protocol Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-file-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequence File Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequence File Operations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#design-inspiration" class="md-nav__link">
+  <a href="#load_sequence" class="md-nav__link">
     <span class="md-ellipsis">
-      Design Inspiration
+      load_sequence()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save_sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_sequence()
     </span>
   </a>
   
@@ -1792,28 +1771,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#sequence-table-editing" class="md-nav__link">
     <span class="md-ellipsis">
-      How It Works
+      Sequence Table Editing
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How It Works">
+    <nav class="md-nav" aria-label="Sequence Table Editing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#communication-flow" class="md-nav__link">
+  <a href="#modify_sequence_row" class="md-nav__link">
     <span class="md-ellipsis">
-      Communication Flow
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#architecture-benefits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Architecture Benefits
+      modify_sequence_row()
     </span>
   </a>
   
@@ -1825,28 +1795,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#command-format-and-examples" class="md-nav__link">
+  <a href="#excel-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Command Format and Examples
+      Excel Integration
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Command Format and Examples">
+    <nav class="md-nav" aria-label="Excel Integration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-commands-no-return-value" class="md-nav__link">
+  <a href="#prepare_sequence_table" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Commands (No Return Value)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#commands-with-return-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commands with Return Values
+      prepare_sequence_table()
     </span>
   </a>
   
@@ -1858,19 +1819,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#file-structure" class="md-nav__link">
+  <a href="#sequence-execution-control" class="md-nav__link">
     <span class="md-ellipsis">
-      File Structure
+      Sequence Execution Control
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="File Structure">
+    <nav class="md-nav" aria-label="Sequence Execution Control">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#file-content-format" class="md-nav__link">
+  <a href="#start" class="md-nav__link">
     <span class="md-ellipsis">
-      File Content Format
+      start()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pause" class="md-nav__link">
+    <span class="md-ellipsis">
+      pause()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      resume()
     </span>
   </a>
   
@@ -1882,19 +1861,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#command-numbering" class="md-nav__link">
+  <a href="#practical-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Command Numbering
+      Practical Examples
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Command Numbering">
+    <nav class="md-nav" aria-label="Practical Examples">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#benefits" class="md-nav__link">
+  <a href="#manual-sequence-creation" class="md-nav__link">
     <span class="md-ellipsis">
-      Benefits
+      Manual Sequence Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excel-based-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excel-Based Sequence
     </span>
   </a>
   
@@ -1902,72 +1890,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-communication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Monitoring Communication
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring Communication">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#enable-verbose-logging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enable Verbose Logging
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#no-response-received-timeouterror" class="md-nav__link">
-    <span class="md-ellipsis">
-      No Response Received (TimeoutError)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test-communication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test Communication
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Detection
-    </span>
-  </a>
   
 </li>
       
@@ -1990,140 +1912,271 @@
   
 
 
-<h1 id="file-based-communication-protocol">File-Based Communication Protocol<a class="headerlink" href="#file-based-communication-protocol" title="Permanent link">&para;</a></h1>
-<p>Understanding how Python communicates with ChemStation is essential for troubleshooting and advanced usage. This guide explains the robust file-based protocol that enables reliable command execution between Python and ChemStation.</p>
-<h2 id="protocol-overview">Protocol Overview<a class="headerlink" href="#protocol-overview" title="Permanent link">&para;</a></h2>
-<p>The ChemStation API uses a file-based communication protocol to ensure reliable, bidirectional communication between Python and ChemStation. This approach provides superior reliability compared to direct socket connections, especially in Windows environments where COM interfaces can be unstable.</p>
-<h3 id="design-inspiration">Design Inspiration<a class="headerlink" href="#design-inspiration" title="Permanent link">&para;</a></h3>
-<p>This communication protocol is adapted and enhanced from the excellent work by the Cronin Group at the University of Glasgow. The original implementation can be found at: <a href="https://github.com/croningp/analyticallabware/tree/master/AnalyticalLabware/devices/Agilent">https://github.com/croningp/analyticallabware/tree/master/AnalyticalLabware/devices/Agilent</a></p>
-<p>Our implementation extends this foundation with additional error handling, timeout management, and CE-specific optimizations for improved reliability and functionality.</p>
-<hr />
-<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
-<p>The protocol operates through two files that act as communication channels between Python and ChemStation:</p>
-<h3 id="communication-flow">Communication Flow<a class="headerlink" href="#communication-flow" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Command Writing</strong>: Python formats the command with a unique number and writes it to the command file</li>
-<li><strong>Macro Monitoring</strong>: The ChemStation macro continuously monitors the command file every 200 milliseconds</li>
-<li><strong>Command Execution</strong>: When a new command is detected, the macro reads it and sends it to ChemStation's Command Processor</li>
-<li><strong>Response Writing</strong>: Results are written to the response file with the matching command number</li>
-<li><strong>Response Reading</strong>: Python reads the response file and matches the response to the original command</li>
-</ol>
-<h3 id="architecture-benefits">Architecture Benefits<a class="headerlink" href="#architecture-benefits" title="Permanent link">&para;</a></h3>
+<h1 id="sequence-module-batch-analysis-management">Sequence Module - Batch Analysis Management<a class="headerlink" href="#sequence-module-batch-analysis-management" title="Permanent link">&para;</a></h1>
+<p>Management and execution of ChemStation sequences for automated batch analysis.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Sequence module provides:</p>
 <ul>
-<li><strong>Reliability</strong>: File-based communication eliminates connection timeouts and port conflicts</li>
-<li><strong>Bidirectional</strong>: Full command and response capabilities with proper synchronization</li>
-<li><strong>Error Handling</strong>: Comprehensive error detection and automatic retry mechanisms</li>
-<li><strong>Cross-Platform</strong>: Works consistently across different Windows versions and ChemStation releases</li>
+<li><strong>Sequence file operations</strong>: Load and save sequence files (.S files)</li>
+<li><strong>Table editing</strong>: Modify sequence parameters row by row</li>
+<li><strong>Excel integration</strong>: Import sequence data from spreadsheets</li>
+<li><strong>Batch control</strong>: Start, pause, and resume sequence execution</li>
+</ul>
+<p><strong>File Format</strong>: ChemStation .S sequence files
+<strong>Default Directory</strong>: ChemStation sequence directory (_SEQPATH$)</p>
+<hr />
+<h2 id="sequence-file-operations">Sequence File Operations<a class="headerlink" href="#sequence-file-operations" title="Permanent link">&para;</a></h2>
+<h3 id="load_sequence">load_sequence()<a class="headerlink" href="#load_sequence" title="Permanent link">&para;</a></h3>
+<p>Load an existing sequence from file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">load_sequence</span><span class="p">(</span><span class="n">seq_name</span><span class="p">,</span> <span class="n">seq_dir</span><span class="o">=</span><span class="s2">&quot;_SEQPATH$&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>seq_name</code> (str): Sequence filename (without .S extension)</li>
+<li><code>seq_dir</code> (str): Directory containing sequence files (defaults to ChemStation sequence directory)</li>
+</ul>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Load standard sequence</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">load_sequence</span><span class="p">(</span><span class="s2">&quot;Protein_Analysis_Batch&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Load from custom directory</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">load_sequence</span><span class="p">(</span><span class="s2">&quot;TestSeq&quot;</span><span class="p">,</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Custom</span><span class="se">\\</span><span class="s2">Sequences</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Load daily QC sequence</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">load_sequence</span><span class="p">(</span><span class="s2">&quot;Daily_QC_2024&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Sequence loading overwrites current sequence in memory</li>
+<li>All unsaved changes to current sequence are lost</li>
+<li>Sequence parameters become active immediately</li>
 </ul>
 <hr />
-<h2 id="command-format-and-examples">Command Format and Examples<a class="headerlink" href="#command-format-and-examples" title="Permanent link">&para;</a></h2>
-<h3 id="basic-commands-no-return-value">Basic Commands (No Return Value)<a class="headerlink" href="#basic-commands-no-return-value" title="Permanent link">&para;</a></h3>
-<p>For commands that perform actions without returning data:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Python code</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">api</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;LoadMethod _METHPATH$, MyMethod.M&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Command file content</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="mi">123</span> <span class="n">LoadMethod</span> <span class="n">_METHPATH</span><span class="err">$</span><span class="p">,</span> <span class="n">MyMethod</span><span class="o">.</span><span class="n">M</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Response file content (indicates successful execution)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="mi">123</span> <span class="kc">None</span>
+<h3 id="save_sequence">save_sequence()<a class="headerlink" href="#save_sequence" title="Permanent link">&para;</a></h3>
+<p>Save current sequence to file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">save_sequence</span><span class="p">(</span><span class="n">seq_name</span><span class="o">=</span><span class="s2">&quot;_SEQFILE$&quot;</span><span class="p">,</span> <span class="n">seq_dir</span><span class="o">=</span><span class="s2">&quot;_SEQPATH$&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="commands-with-return-values">Commands with Return Values<a class="headerlink" href="#commands-with-return-values" title="Permanent link">&para;</a></h3>
-<p>To capture return values, prefix the command with <code>response$ =</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Python code</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">method_path</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;response$ = _METHPATH$&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current method path: </span><span class="si">{</span><span class="n">method_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Command file content</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="mi">124</span> <span class="n">response</span><span class="err">$</span> <span class="o">=</span> <span class="n">_METHPATH</span><span class="err">$</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Response file content</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="mi">124</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Chem32</span>\<span class="mi">1</span>\<span class="n">Methods</span>\<span class="n">CE</span>\<span class="n">Default</span>\
-</code></pre></div>
-<hr />
-<h2 id="file-structure">File Structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h2>
-<p>The communication system uses a simple file structure within your project directory:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SIA-CE/
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>└── ChemstationAPI/
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    └── core/
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        ├── ChemPyConnect.mac              # ChemStation communication macro
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        └── communication_files/           # Communication directory
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>            ├── command                   # Commands from Python → ChemStation
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            └── response                  # Responses from ChemStation → Python
-</code></pre></div>
-<h3 id="file-content-format">File Content Format<a class="headerlink" href="#file-content-format" title="Permanent link">&para;</a></h3>
-<p><strong>Command File:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>125 response$ = _METHPATH$
-</code></pre></div></p>
-<p><strong>Response File:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>125 C:\Chem32\1\Methods\CE\Migration\
-</code></pre></div></p>
-<hr />
-<h2 id="command-numbering">Command Numbering<a class="headerlink" href="#command-numbering" title="Permanent link">&para;</a></h2>
-<p>The protocol uses sequential command numbers (1-256) to ensure proper command-response matching and prevent confusion when multiple commands are sent rapidly. Numbers automatically wrap around to 1 after reaching the maximum.</p>
-<h3 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h3>
+<p><strong>Parameters:</strong></p>
 <ul>
-<li><strong>Prevents confusion</strong> when multiple commands are sent quickly</li>
-<li><strong>Enables debugging</strong> by tracking specific command execution</li>
-<li><strong>Supports error isolation</strong> for failed commands</li>
+<li><code>seq_name</code> (str): Filename for saved sequence (defaults to current sequence name)</li>
+<li><code>seq_dir</code> (str): Directory for saving sequence (defaults to ChemStation sequence directory)</li>
+</ul>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Save with new name</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">save_sequence</span><span class="p">(</span><span class="s2">&quot;Modified_Protein_Sequence&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Overwrite current sequence</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">save_sequence</span><span class="p">()</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Save to custom location</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">save_sequence</span><span class="p">(</span><span class="s2">&quot;Backup_Sequence&quot;</span><span class="p">,</span> <span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">Backups</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Saved sequence includes all table data and parameters</li>
+<li>Existing files with same name are overwritten</li>
+<li>.S extension added automatically</li>
 </ul>
 <hr />
-<h2 id="monitoring-communication">Monitoring Communication<a class="headerlink" href="#monitoring-communication" title="Permanent link">&para;</a></h2>
-<h3 id="enable-verbose-logging">Enable Verbose Logging<a class="headerlink" href="#enable-verbose-logging" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemstationAPI.core.communication_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommunicationConfig</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ChemstationAPI</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChemstationAPI</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Create configuration with verbose output</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">config</span> <span class="o">=</span> <span class="n">CommunicationConfig</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">api</span> <span class="o">=</span> <span class="n">ChemstationAPI</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<h2 id="sequence-table-editing">Sequence Table Editing<a class="headerlink" href="#sequence-table-editing" title="Permanent link">&para;</a></h2>
+<h3 id="modify_sequence_row">modify_sequence_row()<a class="headerlink" href="#modify_sequence_row" title="Permanent link">&para;</a></h3>
+<p>Modify parameters in specific sequence table row.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">modify_sequence_row</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">vial_sample</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">sample_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">sample_info</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">data_file_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>row</code> (int): Row number in sequence table (1-based indexing)</li>
+<li><code>vial_sample</code> (str): Carousel position for sample vial (1-48)</li>
+<li><code>method</code> (str): CE method name (without .M extension)</li>
+<li><code>sample_name</code> (str): Descriptive sample name for identification</li>
+<li><code>sample_info</code> (str): Additional sample metadata and notes</li>
+<li><code>data_file_name</code> (str): Custom data filename (optional)</li>
+</ul>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Modify sample vial and method</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">modify_sequence_row</span><span class="p">(</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">vial_sample</span><span class="o">=</span><span class="s2">&quot;15&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;CE_Protein_Analysis&quot;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">)</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># All commands and responses will be logged to console</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">method_path</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;response$ = _METHPATH$&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># Console output:</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># Sending command 1: response$ = _METHPATH$</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1"># Received response 1: C:\Chem32\1\Methods\CE\Migration\</span>
-</code></pre></div>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Update sample information only</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">modify_sequence_row</span><span class="p">(</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">sample_name</span><span class="o">=</span><span class="s2">&quot;Unknown_Sample_001&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">sample_info</span><span class="o">=</span><span class="s2">&quot;Customer sample, urgent analysis&quot;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Complete row modification</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">modify_sequence_row</span><span class="p">(</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">vial_sample</span><span class="o">=</span><span class="s2">&quot;22&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;MEKC_SmallMolecules&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="n">sample_name</span><span class="o">=</span><span class="s2">&quot;Caffeine_Standard&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="n">sample_info</span><span class="o">=</span><span class="s2">&quot;1mg/mL in water&quot;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Only specified parameters are modified (empty parameters remain unchanged)</li>
+<li>Sequence must be loaded before modification</li>
+<li>Changes made to memory - use <code>save_sequence()</code> to persist</li>
+<li>Row numbering starts from 1</li>
+</ul>
 <hr />
-<h2 id="quick-troubleshooting">Quick Troubleshooting<a class="headerlink" href="#quick-troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="no-response-received-timeouterror">No Response Received (TimeoutError)<a class="headerlink" href="#no-response-received-timeouterror" title="Permanent link">&para;</a></h3>
-<p><strong>Most common causes:</strong></p>
-<ol>
-<li>
-<p><strong>ChemStation macro not running</strong> - The communication macro must be active in ChemStation</p>
-<p><strong>Solution:</strong> In ChemStation command line, execute:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>macro &quot;path\to\ChemPyConnect.mac&quot;; Python_Run
+<h2 id="excel-integration">Excel Integration<a class="headerlink" href="#excel-integration" title="Permanent link">&para;</a></h2>
+<h3 id="prepare_sequence_table">prepare_sequence_table()<a class="headerlink" href="#prepare_sequence_table" title="Permanent link">&para;</a></h3>
+<p>Import and create sequence table from Excel spreadsheet.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">prepare_sequence_table</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sequence_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vial_column</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method_column</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename_column</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_name_column</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_info_column</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replicate_column</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
-   Look for "Start Python communication" message.</p>
-</li>
-<li>
-<p><strong>Error dialog appeared in ChemStation</strong> - Communication is blocked while dialog is open</p>
-</li>
-</ol>
-<p><strong>Solution:</strong> Check ChemStation for any open error dialogs or message boxes. Close all dialogs and try again. This commonly occurs when:
-   - Starting a method while another is running
-   - Attempting operations on non-existent files
-   - Hardware communication errors</p>
-<ol>
-<li><strong>Incorrect paths in macro</strong> - Macro is running but using wrong communication directory</li>
-</ol>
-<p><strong>Solution:</strong> Check that the path in <code>ChemPyConnect.mac</code> matches your actual communication files directory. The macro contains a hardcoded path that may need updating for your installation.</p>
-<h3 id="test-communication">Test Communication<a class="headerlink" href="#test-communication" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">api</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Print &#39;Test&#39;&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Communication working&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✗ No response - check macro and dialogs&quot;</span><span class="p">)</span>
-</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>excel_file_path</code> (str): Full path to Excel file containing sequence data</li>
+<li><code>sequence_name</code> (str): Existing sequence to load before modification (optional)</li>
+<li><code>sheet_name</code> (int): Excel worksheet index to read (0-based, default: first sheet)</li>
+<li><code>vial_column</code> (str): Excel column name containing vial positions</li>
+<li><code>method_column</code> (str): Excel column name containing method names</li>
+<li><code>sample_name_column</code> (str): Excel column name containing sample names</li>
+<li><code>sample_info_column</code> (str): Excel column name containing sample metadata</li>
+<li><code>filename_column</code> (str): Excel column name containing custom filenames</li>
+<li><code>replicate_column</code> (str): Excel column name containing replicate information</li>
+</ul>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Basic import</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">prepare_sequence_table</span><span class="p">(</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">excel_file_path</span><span class="o">=</span><span class="s2">&quot;sample_list.xlsx&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">vial_column</span><span class="o">=</span><span class="s2">&quot;Vial&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">method_column</span><span class="o">=</span><span class="s2">&quot;Method&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">sample_name_column</span><span class="o">=</span><span class="s2">&quot;Sample&quot;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># Full import with all columns</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">prepare_sequence_table</span><span class="p">(</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="n">excel_file_path</span><span class="o">=</span><span class="s2">&quot;complex_sequence.xlsx&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="n">sequence_name</span><span class="o">=</span><span class="s2">&quot;Research_Project_2024&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="n">vial_column</span><span class="o">=</span><span class="s2">&quot;Vial_Position&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="n">method_column</span><span class="o">=</span><span class="s2">&quot;CE_Method&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    <span class="n">sample_name_column</span><span class="o">=</span><span class="s2">&quot;Sample_ID&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="n">sample_info_column</span><span class="o">=</span><span class="s2">&quot;Description&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="n">filename_column</span><span class="o">=</span><span class="s2">&quot;Data_Name&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>    <span class="n">replicate_column</span><span class="o">=</span><span class="s2">&quot;Rep_Number&quot;</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="p">)</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="c1"># Import from second worksheet</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">prepare_sequence_table</span><span class="p">(</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>    <span class="n">excel_file_path</span><span class="o">=</span><span class="s2">&quot;batch_data.xlsx&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="n">sheet_name</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>    <span class="n">vial_column</span><span class="o">=</span><span class="s2">&quot;Position&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>    <span class="n">method_column</span><span class="o">=</span><span class="s2">&quot;Analysis_Method&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>    <span class="n">sample_name_column</span><span class="o">=</span><span class="s2">&quot;Sample_Name&quot;</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Excel must be installed on the system</li>
+<li>File should not be open during import</li>
+<li>Column names must match exactly (case-sensitive)</li>
+<li>Referenced methods must exist in method directory</li>
+</ul>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Excel application briefly visible during processing</li>
+<li>Temporary Excel file created during processing</li>
+<li>Sequence automatically saved after import</li>
+<li>Method names validated against method directory</li>
+</ul>
 <hr />
-<h2 id="error-detection">Error Detection<a class="headerlink" href="#error-detection" title="Permanent link">&para;</a></h2>
-<p>The API automatically detects and handles ChemStation errors:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="c1"># Attempt invalid operation</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">api</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;LoadMethod _METHPATH$, NonExistentMethod.M&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">except</span> <span class="n">ChemstationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ChemStation Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="c1"># Output: ERROR: Method file &#39;NonExistentMethod.M&#39; not found</span>
+<h2 id="sequence-execution-control">Sequence Execution Control<a class="headerlink" href="#sequence-execution-control" title="Permanent link">&para;</a></h2>
+<h3 id="start">start()<a class="headerlink" href="#start" title="Permanent link">&para;</a></h3>
+<p>Start execution of the current sequence.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Start loaded sequence</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">load_sequence</span><span class="p">(</span><span class="s2">&quot;Daily_Analysis&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div></p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Sequence must be loaded and validated before starting</li>
+<li>Instrument enters sequence mode with limited manual control</li>
+<li>Progress monitored via system status methods</li>
+</ul>
+<hr />
+<h3 id="pause">pause()<a class="headerlink" href="#pause" title="Permanent link">&para;</a></h3>
+<p>Pause the currently running sequence.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Pause during execution</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+</code></pre></div></p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Current analysis completes before pausing</li>
+<li>Sequence stops before starting next sample</li>
+<li>Manual operations possible while paused</li>
+</ul>
+<hr />
+<h3 id="resume">resume()<a class="headerlink" href="#resume" title="Permanent link">&para;</a></h3>
+<p>Resume a paused sequence from where it stopped.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Resume after pause</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
+</code></pre></div></p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Resumes from next unprocessed sample</li>
+<li>All sequence parameters remain unchanged</li>
+<li>Instrument returns to automated sequence mode</li>
+</ul>
+<hr />
+<h2 id="practical-examples">Practical Examples<a class="headerlink" href="#practical-examples" title="Permanent link">&para;</a></h2>
+<h3 id="manual-sequence-creation">Manual Sequence Creation<a class="headerlink" href="#manual-sequence-creation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Load existing sequence or create new</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">load_sequence</span><span class="p">(</span><span class="s2">&quot;Daily_QC&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Add samples</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">modify_sequence_row</span><span class="p">(</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="n">vial_sample</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;CE_QC&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="n">sample_name</span><span class="o">=</span><span class="s2">&quot;QC_Standard&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="n">sample_info</span><span class="o">=</span><span class="s2">&quot;Daily system suitability&quot;</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="p">)</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">modify_sequence_row</span><span class="p">(</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>    <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>    <span class="n">vial_sample</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;CE_Analysis&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>    <span class="n">sample_name</span><span class="o">=</span><span class="s2">&quot;Sample_001&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    <span class="n">sample_info</span><span class="o">=</span><span class="s2">&quot;Customer sample&quot;</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="p">)</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="c1"># Save and run</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">save_sequence</span><span class="p">(</span><span class="s2">&quot;Daily_QC_Modified&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="excel-based-sequence">Excel-Based Sequence<a class="headerlink" href="#excel-based-sequence" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Import from Excel</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">prepare_sequence_table</span><span class="p">(</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">excel_file_path</span><span class="o">=</span><span class="s2">&quot;protein_samples.xlsx&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">vial_column</span><span class="o">=</span><span class="s2">&quot;Vial&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">method_column</span><span class="o">=</span><span class="s2">&quot;Method&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="n">sample_name_column</span><span class="o">=</span><span class="s2">&quot;Sample_ID&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="n">sample_info_column</span><span class="o">=</span><span class="s2">&quot;Notes&quot;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="p">)</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1"># Start batch analysis</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="n">api</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="c1"># Monitor and control</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="k">while</span> <span class="n">api</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">method_on</span><span class="p">():</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sequence running...&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 </code></pre></div>
 
 
