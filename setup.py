@@ -29,14 +29,7 @@ setup(
         "pandas>=1.2.0",
         "pywin32>=300; platform_system=='Windows'",
     ],
-    extras_require={
-        'dev': [
-            'pytest>=6.0',
-            'pytest-cov>=2.10',
-            'black>=21.0',
-            'flake8>=3.9',
-        ]
-    },
+    
     package_data={
         'ChemstationAPI': [
             'controllers/macros/*.mac',

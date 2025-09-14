@@ -27,7 +27,7 @@ Commands are automatically formatted as: `{prefix}{address}{command}\r`
 ## Basic Usage
 
 ```python
-from SI_API.core import CommandSender
+from SIA_API.core import CommandSender
 
 # Initialize device communication
 device = CommandSender(
@@ -63,39 +63,94 @@ device.send_command(
 
 **Important**: The wait_for_completion function is called while the serial port remains open. This allows for continuous monitoring or additional operations during the waiting period.
 
+---
 
 ## Custom Device Integration
 
-### Arduino Example
-If you have a pre-programmed Arduino controlling a custom stirrer:
+### Arduino Integration
 
-Udělat to pobrobněji krok po kroku a vysvětlit jak funguje sestavování nového modulu, že je potřeba zjistit si příkazy, které se budou odesílat (a Arduina to bude naprogramované ale u jiných to může být v dokumetaci zařízení)
+If you have a pre-programmed Arduino (or similar microcontroller) that responds to specific serial commands, you can easily create a Python controller to integrate it with your SIA system.
 
-```python
-class StirrerController(CommandSender):
-    """Control custom Arduino-based stirrer"""
-    
-    def __init__(self, port):
-        super().__init__(port=port, prefix="", address="")
-    
-    def start_stirring(self, speed):
-        """Start stirring at specified speed (RPM)"""
-        self.send_command(f"START {speed}")
-    
-    def stop_stirring(self):
-        """Stop stirring"""
-        self.send_command("STOP")
-    
-    def get_temperature(self):
-        """Read current temperature from Arduino"""
-        temp = self.send_command("TEMP?", get_response=True)
-        return float(temp.strip())
+#### Step 1: Identify Device Commands
 
-# Usage
-stirrer = StirrerController("COM5")
-stirrer.start_stirring(500)  # 500 RPM
-current_temp = stirrer.get_temperature()
-stirrer.stop_stirring()
+First, determine what commands your Arduino understands by checking your Arduino code or documentation:
+
+**Example Arduino commands:**
+```
+START 150     -> Starts operation at speed 150, returns "OK"
+STOP          -> Stops operation, returns "OK"  
+STATUS?       -> Returns current status: "SPEED:150,RUNNING:YES"
+TEMP?         -> Returns temperature: "TEMP:25.4"
 ```
 
-The CommandSender design allows easy integration with any device that uses serial communication by understanding the device's command protocol and implementing the appropriate prefix, address, and command formatting.
+#### Step 2: Create Python Controller
+
+Create a Python class that wraps your Arduino commands:
+
+```python
+from SIA_API.core import CommandSender
+
+class ArduinoController(CommandSender):
+    """Controller for pre-programmed Arduino device."""
+    
+    def __init__(self, port, baudrate=9600):
+        # Most Arduino devices don't need prefix/address
+        super().__init__(port=port, prefix="", address="", baudrate=baudrate)
+    
+    def start_operation(self, speed):
+        """Start Arduino operation at specified speed."""
+        response = self.send_command(f"START {speed}", get_response=True)
+        
+        if "OK" in response:
+            print(f"✓ Started at speed {speed}")
+            return True
+        else:
+            raise RuntimeError(f"Start failed: {response}")
+    
+    def stop_operation(self):
+        """Stop Arduino operation."""
+        response = self.send_command("STOP", get_response=True)
+        
+        if "OK" in response:
+            print("✓ Operation stopped")
+            return True
+        else:
+            raise RuntimeError(f"Stop failed: {response}")
+    
+    def get_status(self):
+        """Get current Arduino status."""
+        response = self.send_command("STATUS?", get_response=True)
+        
+        # Parse response: "SPEED:150,RUNNING:YES"
+        status = {}
+        
+        if "SPEED:" in response:
+            speed_part = response.split("SPEED:")[1].split(",")[0]
+            status['speed'] = int(speed_part)
+        
+        if "RUNNING:" in response:
+            running_part = response.split("RUNNING:")[1]
+            status['running'] = "YES" in running_part
+            
+        return status
+    
+    def get_temperature(self):
+        """Read temperature from Arduino sensor."""
+        response = self.send_command("TEMP?", get_response=True)
+        
+        # Parse response: "TEMP:25.4"
+        if "TEMP:" in response:
+            temp_str = response.split("TEMP:")[1]
+            return float(temp_str)
+        else:
+            raise RuntimeError(f"Failed to parse temperature: {response}")
+
+# Usage example
+arduino = ArduinoController("COM5")
+arduino.start_operation(150)
+status = arduino.get_status()
+temperature = arduino.get_temperature()
+arduino.stop_operation()
+```
+
+The CommandSender design allows easy integration with any device that uses serial communication by understanding the device's command protocol and implementing the appropriate Python wrapper class.
