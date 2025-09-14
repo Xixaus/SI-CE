@@ -96,9 +96,9 @@ nav:
       - Valve Selector: sia-api/valve_control.md
       - Workflows: sia-api/ce_workflows.md
   - Examples:
-      - First Analysis: tutorials/first-analysis.md
-      - Batch Processing: tutorials/batch-processing.md
-      - SIA-CE Integration: tutorials/sia-ce-integration.md
+      - Calibration: tutorials/calibration.md
+      - Batch Processing: tutorials/homogenization.md
+      - SIA-CE Integration: tutorials/sample_processor.md
   - API Reference:
       - ChemStation API:
           - Main API: api-reference/chemstation-api.md
