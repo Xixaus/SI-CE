@@ -1,178 +1,136 @@
-# SIA-CE Integration Package
+# SI-CE Integration Package
 
-[![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
-[![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+Python package for automated control of Agilent ChemStation CE systems integrated with Sequential Injection (SI) hardware. Enables complete laboratory automation from sample preparation to data acquisition.
 
-**Automated Capillary Electrophoresis with Sequential Injection Analysis**
-
-Complete Python interface for controlling Agilent ChemStation CE systems and Sequential Injection (SI) hardware, enabling fully automated analytical workflows with minimal manual intervention.
-
-## 🔬 Overview
-
-SIA-CE combines two powerful analytical techniques:
-
-- **Capillary Electrophoresis (CE)**: High-resolution separation technique for analyzing charged molecules
-- **Sequential Injection (SI)**: Automated sample preparation and liquid handling system
-
-This integration provides:
-- ✅ Fully automated sample preparation and analysis
-- ✅ Reduced manual intervention and human error  
-- ✅ Increased throughput and reproducibility
-- ✅ Complex analytical workflows with minimal supervision
-
-## 🚀 Key Features
+## Features
 
 ### ChemStation API
-- Direct control of Agilent ChemStation via Command Processor
-- Comprehensive method and sequence management
-- Real-time instrument status monitoring
-- Automated vial handling and positioning
-- File-based communication protocol for reliability
+- Direct communication with Agilent ChemStation command processor
+- Automated vial handling for CE systems (load/unload, position tracking)
+- Method and sequence management with parameter control
+- Real-time instrument status monitoring and diagnostics
 
-### SIA API  
-- Precise syringe pump control (Hamilton MVP compatible)
-- Multi-position valve automation (VICI compatible)
-- Pre-built workflows for common operations
-- Volume tracking and safety features
-- Flexible port configuration and method development
+### SIA API
+- Serial communication with SI hardware (syringe pumps, valve selectors)
+- Pre-configured workflows for sample preparation and mixing
+- Automated dilution, homogenization, and batch processing
+- High-level methods for complex analytical procedures
 
-### Integration Benefits
-- Seamless coordination between sample preparation and analysis
-- One unified Python interface for complete workflow control
-- Parallel operations to reduce total analysis time
-- Consistent and reproducible analytical procedures
+### Integration
+- Parallel sample preparation during CE analysis
+- Excel-based batch processing with individual sample timing
+- Automated method execution with custom parameters
+- Comprehensive error handling and validation
 
-## 🛠️ System Requirements
+## Quick Start
 
-### Hardware
-- **CE System**: Agilent 7100 Capillary Electrophoresis System (or compatible)
-- **SI Components**: 
-  - Syringe pump (Hamilton MVP series or compatible)
-  - Multi-position valve selector (VICI/Valco or compatible)  
-- **Computer**: Windows PC with available COM ports
+### Installation
 
-### Software
-- **OS**: Windows 7 or higher
-- **ChemStation**: Agilent OpenLab ChemStation Edition (tested on C.01.07 SR2)
-- **Python**: 3.7+ with pip package manager
+```bash
+# Download and extract the package
+git clone https://github.com/yourusername/SI-CE.git
+cd SI-CE
 
-## 📦 Installation
-
-### Quick Install
-
-1. **Clone or Download the Package**
-   ```bash
-   git clone https://github.com/Xixaus/SIA-CE-code.git
-   cd SIA-CE-code
-   ```
-
-2. **Install Package**
-   ```bash
-   # Windows - using provided batch file
-   install.bat
-   
-   # Or manually with pip
-   python -m pip install -e .
-   ```
-
-3. **Verify Installation**
-   ```python
-   import ChemstationAPI
-   import SIA_API
-   print("✅ SIA-CE package successfully installed!")
-   ```
-
-### Dependencies
-The following packages are automatically installed:
-- `pyserial>=3.5` - Serial communication with SIA hardware
-- `tqdm>=4.60.0` - Progress bars for long operations
-- `pandas>=1.2.0` - Data manipulation and Excel integration
-- `pywin32>=300` - Windows-specific functionality
-
-## ⚙️ Setup
-
-### 1. ChemStation Configuration
-
-1. **Load Communication Macro** in ChemStation command line:
-   ```chemstation
-   macro "C:\path\to\SIA-CE\ChemstationAPI\core\ChemPyConnect.mac"; Python_Run
-   ```
-
-2. **Verify Connection**:
-   ```python
-   from ChemstationAPI import ChemstationAPI
-   api = ChemstationAPI()
-   print("ChemStation connected successfully!")
-   ```
-
-### 2. Hardware Configuration
-
-**Identify COM Ports**:
-```python
-import serial.tools.list_ports
-
-for port in serial.tools.list_ports.comports():
-    print(f"{port.device}: {port.description}")
+# Install dependencies
+python -m pip install -e .
 ```
 
-**Test SIA Devices**:
-```python
-from SIA_API.devices import SyringeController, ValveSelector
+### Basic Usage
 
-# Initialize and test
+```python
+from ChemstationAPI import ChemstationAPI
+from SIA_API.devices import SyringeController, ValveSelector
+from SIA_API.methods import PreparedSIMethods
+
+# Initialize systems
+ce = ChemstationAPI()
 syringe = SyringeController(port="COM3", syringe_size=1000)
 valve = ValveSelector(port="COM4", num_positions=8)
+workflow = PreparedSIMethods(ce, syringe, valve)
 
-syringe.initialize()  # Home syringe
-valve.position(1)     # Test valve movement
+# Automated sample preparation and analysis
+workflow.system_initialization_and_cleaning()
+workflow.continuous_fill(vial=15, volume=1500, solvent_port=3)
+ce.method.execution_method_with_parameters(
+    vial=15, method_name="CE_Analysis", sample_name="Sample_001"
+)
 ```
 
-## 📁 Project Structure
+## Hardware Compatibility
+
+### Tested Systems
+- **CE:** Agilent 7100 CE with OpenLab ChemStation C.01.07 SR2
+- **Syringe Pumps:** Cavro XCalibur series
+- **Valve Selectors:** VICI/Valco multi-position valves
+
+### Requirements
+- ChemStation with command processor access
+- Serial communication ports for SI devices
+- Python 3.7 or higher
+
+## Project Structure
 
 ```
-SIA-CE/
-├── ChemstationAPI/           # ChemStation control module
-│   ├── controllers/          # CE, method, sequence controllers
-│   ├── core/                 # Communication protocol
-│   └── exceptions.py         # Error handling
-├── SIA_API/                  # Sequential Injection module  
-│   ├── devices/              # Syringe and valve controllers
-│   ├── methods/              # High-level workflows
-│   └── core/                 # Serial communication
-├── examples/                 # Example applications
-├── docs/                     # Documentation
-└── tests/                    # Test suites
+SI-CE/
+├── ChemstationAPI/          # ChemStation communication and control
+│   ├── core/                # File-based communication protocol
+│   └── controllers/         # CE modules (vials, methods, sequences)
+├── SIA_API/                 # Sequential Injection automation
+│   ├── devices/             # Hardware controllers
+│   └── methods/             # High-level workflows
+├── examples/                # Example scripts and applications
+└── docs/                    # Complete documentation
 ```
 
-## 📚 Documentation
+## Examples
 
-- **[Getting Started Guide](docs/getting-started.md)** - Installation and setup
-- **[ChemStation API](docs/chemstation-api/introduction.md)** - CE instrument control
-- **[SIA API](docs/sia-api/introduction.md)** - Sample preparation automation
-- **[Tutorials](docs/tutorials/first-analysis.md)** - Step-by-step examples
-- **[API Reference](docs/api-reference/)** - Complete function documentation
+### Automated Batch Processing
+Process multiple samples from Excel file with optimized timing:
 
-## 🎯 Use Cases
+```python
+# Configure from Excel
+processor = SampleProcessor(config, chemstation, sia_methods)
+processor.process_all_samples()  # Handles entire batch automatically
+```
 
-- **Routine Analysis**: Automate daily QC and sample testing
-- **Method Development**: Systematic optimization studies
-- **Research**: High-throughput analytical workflows
-- **Validation**: Reproducible analytical procedures
+### Homogenization Study
+Automated optimization of mixing parameters:
 
-## 📄 License
+```python
+# Time-resolved homogenization analysis
+run_time_elution_experiment(processor)
+```
+
+See `examples/` directory for complete implementations.
+
+## Development Status
+
+**Current Version:** 0.1.0
+
+**Stability:** 
+- ChemStation API: Stable, production-ready
+- SIA API: Stable, tested with multiple hardware configurations
+- Integration workflows: Active development
+
+**Compatibility:**
+- Developed on ChemStation C.01.07 SR2 with CE7100
+- Tested on Windows 7, 10, 11
+- Compatible with Python 3.7-3.11
+
+## Support
+
+- **Documentation:** [Project Wiki](https://xixaus.github.io/SI-CE/)
+
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Support
+## Acknowledgments
 
-- **Issues**: [GitHub Issues](https://github.com/Xixaus/SIA-CE-code/issues)
-- **Documentation**: [Project Documentation](https://xixaus.github.io/SI-CE/)
-- **Contact**: Richard Maršala - risanius@gmail.com
+- File-based communication protocol adapted from [Cronin Group's AnalyticalLabware](https://github.com/croningp/analyticallabware)
+- ChemStation macro concepts from Agilent Community Forum
+- SIA control patterns inspired by CoCoSoft framework
 
-## ⚠️ Important Notes
+---
 
-- **Development Status**: This project is actively developed and optimized for specific hardware configurations
-- **Compatibility**: Tested with ChemStation C.01.07 SR2 [255] and Agilent 7100 CE
-- **Safety**: Always follow proper laboratory safety procedures when working with automated systems
-- **Validation**: Thoroughly test and validate all procedures before routine use
+**Note:** This package was developed for specific laboratory automation needs. While designed for general use, compatibility with different ChemStation versions and hardware configurations may require testing and adaptation.
