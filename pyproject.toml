@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sia-ce-control"
+version = "0.1.0"
+description = "Combined API for ChemStation CE and SIA control"
+authors = [
+    {name = "Richard Maršala", email = "risaniusl@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: Microsoft :: Windows",
+]
+dependencies = [
+    "pyserial>=3.5",
+    "tqdm>=4.60.0",
+    "pandas>=1.2.0",
+    "pywin32>=300; platform_system=='Windows'",
+]
+
+[project.urls]
+Homepage = "https://github.com/Xixaus/sia-ce"
+
+[tool.setuptools]
+packages = ["SIA_API", "ChemstationAPI", "SIA_API.devices", "SIA_API.core", "SIA_API.methods", "ChemstationAPI.controllers", "ChemstationAPI.core"]
+
+[tool.setuptools.package-data]
+ChemstationAPI = ["controllers/macros/*.mac", "core/*.mac"]
+
+[tool.pylance]
+include = ["SIA_API", "ChemstationAPI"]
+
+[tool.pyright]
+include = ["SIA_API", "ChemstationAPI"]

@@ -1,0 +1,32 @@
+"""
+SIA-CE Control - Combined API for ChemStation CE and SIA control.
+
+This package provides comprehensive control for Sequential Injection Analysis
+systems and ChemStation CE integration.
+"""
+
+# Version information
+__version__ = "0.1.0"
+__author__ = "Richard Maršala"
+
+# Import main components for convenient access
+from SIA_API.devices.syringe_controller import SyringeController
+from SIA_API.devices.valve_selector import ValveSelector
+from SIA_API.methods.prepared_methods import PreparedSIMethods
+from SIA_API.methods.config import SIConfig, DEFAULT_CONFIG
+from SIA_API.core.command_sender import CommandSender
+
+# Import ChemStation API components
+from ChemstationAPI import ChemstationAPI
+
+__all__ = [
+    'SyringeController',
+    'ValveSelector',
+    'PreparedSIMethods',
+    'SIConfig',
+    'DEFAULT_CONFIG',
+    'CommandSender',
+    'ChemstationAPI',
+    '__version__',
+    '__author__',
+]
