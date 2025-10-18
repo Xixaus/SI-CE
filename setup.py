@@ -86,6 +86,7 @@ setup(
         "tqdm>=4.60.0",
         "pandas>=1.2.0",
         "pywin32>=300; platform_system=='Windows'",
+        "openpyxl>=3.1.5"
     ],
 
     package_data={
