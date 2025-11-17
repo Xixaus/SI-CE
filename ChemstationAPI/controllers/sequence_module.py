@@ -409,8 +409,7 @@ class SequenceModule():
         """
         if seq_name != "_SEQFILE$":
             seq_name += ".S"
-
-        self._validate_sequence_exists(seq_name, seq_dir)
+            self._validate_sequence_exists(seq_name, seq_dir)
 
         self.comm.send(f"SaveSequence {seq_dir}, {seq_name}")
 
